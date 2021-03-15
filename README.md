@@ -56,3 +56,11 @@ TODO w. estimates:
       - Refactor code, add comments where needed, update readme
 
 Total estimate: Total hours: 40
+
+
+Planning, take 2:
+
+1. Have a working get request from the client to the db (5 hours)
+2. Build out other layers of the API (10 hours)
+3. Complete UX (5 hours)
+4. Unit testing, and documentation (5 hours)
