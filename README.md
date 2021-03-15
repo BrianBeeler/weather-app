@@ -29,4 +29,30 @@ Commit the code to GitHub, BitBucket, or other hosted Git repository and share i
 6. Please use whichever language you feel best showcases your skills: JavaScript, Node, mysql, maybe python
 7. Commit the code to GitHub: 10-4 
 
- 
+
+TODO w. estimates:
+
+- Tutorials on LATEST react, node, mysql best practices (5 hours)
+- Spin up a react app with cli (30 mins)
+- Create a simple prompt to ask user for location (30 mins)
+- Spin up a node server (3 hours)
+- Create API 
+      - Get hello world (1 hour)
+      - Get locations (2 hours)
+      - Get weather (3 hours)
+      - Post user (2 hours)
+      - Post user location (2 hours)
+- Instantiate mongo db (2 hours)
+      - Create user table (1 hour)
+      - Create location table (1 hour)
+- Integration
+      - Create UI for sign in, and post to api (3 hours)
+      - Create UI for saving location, and post to api (3 hours)
+      - Create api - to db getters/setters (3 hours)
+- UI
+      - Styling (5 hours)
+- Code and documentation (3 hours)
+      - Make sure code runs on all machines and is easy to set up
+      - Refactor code, add comments where needed, update readme
+
+Total estimate: Total hours: 40
