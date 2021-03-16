@@ -31,7 +31,7 @@ const request = require('request');
             res.send(body); 
             }
             else {
-                res.error(error);
+                console.log(response.statusCode);
             }
         });
     }

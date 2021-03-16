@@ -43,7 +43,7 @@ $(function() {
         if ("lat" in data && "lng" in data) {
             console.log("Sending next request.");
             $.ajax({
-                "url": "http://localhost:8080/api/external/weather/"+data.lat+","+data.lng,
+                "url": "http://localhost:8080/api/external/weather/"+data.lat+"/"+data.lng,
                 "dataType": "json",
                 "type": "GET"
             }).done(function(data) {
