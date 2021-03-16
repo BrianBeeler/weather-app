@@ -42,16 +42,21 @@ $(function() {
         }
         if ("lat" in data && "lng" in data) {
             console.log("Sending next request.");
+
+            let lat = (data.lat*90).toFixed(4);
+            let lng = (data.lng*180).toFixed(4);
+
+            console.log(lat, lng);
+
             $.ajax({
-                "url": "http://localhost:8080/api/external/weather/"+data.lat+"/"+data.lng,
+                "url": "http://localhost:8080/api/external/weather/"+38.8894+"/-77.0352",
                 "dataType": "json",
                 "type": "GET"
             }).done(function(data) {
                 console.log("data", data);
                 handleResp(data);
                 
-                // Store in cache
-                cache[zipcode] = data;
+
             }).fail(function(data) {
                 if (data.responseText && (json = $.parseJSON(data.responseText)))
                 {

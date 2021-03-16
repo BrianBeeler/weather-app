@@ -1,5 +1,7 @@
-const request = require('request');
-
+let request = require('request');
+request = request.defaults({
+    headers: {"User-Agent": "BriansWeatherApp"}
+});
 // Create and Save a new Tutorial
 
 
@@ -25,6 +27,7 @@ const request = require('request');
         const lat = req.params.lat;
         const lon = req.params.lon;
         let url = "https://api.weather.gov/points/"+lat+","+lon;
+        console.log(url);
 
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
