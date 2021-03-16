@@ -4,8 +4,7 @@
   "description": "#prompt:",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "server": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +23,6 @@
     "express": "^4.17.1",
     "mysql2": "^2.2.5",
     "sequelize": "^6.5.1"
-  }
+  },
+  "proxy": "http://localhost:8080"
 }
