@@ -25,9 +25,12 @@ $(function() {
     var container = $("#example1");
     var errorDiv = container.find("div.text-error");
     
+
     /** Handle successful response */
     function handleResp(data)
     {
+
+        console.log(data);
         // Check for error
         if (data.error_msg)
             errorDiv.text(data.error_msg);
@@ -36,6 +39,32 @@ $(function() {
             // Set city and state
             container.find("input[name='city']").val(data.city);
             container.find("input[name='state']").val(data.state);
+        }
+        if ("lat" in data && "lng" in data) {
+            console.log("Sending next request.");
+            $.ajax({
+                "url": "http://localhost:8080/api/external/weather/"+data.lat+","+data.lng,
+                "dataType": "json",
+                "type": "GET"
+            }).done(function(data) {
+                console.log("data", data);
+                handleResp(data);
+                
+                // Store in cache
+                cache[zipcode] = data;
+            }).fail(function(data) {
+                if (data.responseText && (json = $.parseJSON(data.responseText)))
+                {
+                    // Store in cache
+                    cache[zipcode] = json;
+                    
+                    // Check for error
+                    if (json.error_msg)
+                        errorDiv.text(json.error_msg);
+                }
+                else
+                    errorDiv.text('Request failed.');
+            });
         }
     }
     
