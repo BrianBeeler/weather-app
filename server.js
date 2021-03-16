@@ -26,10 +26,11 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Brian's application" });
 });
 
-require("./routes/turorial.routes")(app);
+require("./routes/tutorial.routes")(app);
+require("./routes/external.routes")(app);
 
 app.get('*', function(req, res){
-  res.status(402).send('what???');
+  res.status(404).send();
 });
 
 // set port, listen for requests
