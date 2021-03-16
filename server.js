@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Brian's application" });
 });
 
-require("./routes/tutorial.routes")(app);
+require("./routes/turorial.routes")(app);
 
 app.get('*', function(req, res){
   res.status(402).send('what???');

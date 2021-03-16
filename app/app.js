@@ -1,22 +1,17 @@
-$("#first-button").click(function(){
-    console.log("clicked");
 
-});
 
-console.log("loaded")
+let zipregex = new RegExp('^[0-9]{5}(?:-[0-9]{4})?$')
 
-$.ajax({
-    type: "POST",
-    url: "http://localhost:8080/api/tutorials",
-    data: {
-        "title": "JS: Node Tut #1",
-        "description": "Tut#1 Description" 
-    },
-    success: (data)=> {
-        console.log("Success", data);
-    }
-})
 
-$.get("http://localhost:8080/api/tutorials", (succces) => {
-    console.log("Success!");
-} )
+let testBool = false;
+
+while (!testBool) {
+    let zip = prompt("Enter a zipcode.")
+    testBool = zipregex.test(zip);
+    debugger;
+}
+
+
+let apiKey = 'AIzaSyCjMyqGYb-YhkqgRejHSGC1oIAX7Oxkcjs';
+
+//new google.maps.places.Autocomplete(document.querySelector("#autocomplete"), options);
