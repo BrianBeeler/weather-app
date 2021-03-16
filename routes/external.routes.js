@@ -7,7 +7,7 @@ module.exports = app => {
     router.post("/", tutorials.create);
   
     // Retrieve all published Tutorials
-    router.get("/location", external.getLocationByZip);
+    router.get("/location/:zip", external.getLocationByZip);
   
     app.use('/api/external', router);
   };

@@ -63,9 +63,11 @@ $(function() {
                 
                 // Make AJAX request
                 $.ajax({
-                    "url": "http://localhost:8080/api/external/location?zip=42721",
-                    "dataType": "json"
+                    "url": "http://localhost:8080/api/external/location/"+zipcode,
+                    "dataType": "json",
+                    "type": "GET"
                 }).done(function(data) {
+                    console.log("data", data);
                     handleResp(data);
                     
                     // Store in cache
