@@ -26,7 +26,7 @@ request = request.defaults({
         });
     }
 
-    exports.getWeatherByPoint = (req, res) => {
+    exports.getWeatherMetaData = (req, res) => {
         console.log("Get weather by point.");
         const lat = req.params.lat;
         const lng = req.params.lng;
@@ -35,8 +35,11 @@ request = request.defaults({
 
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
-                console.log("Success:",body);
-                res.send(body); 
+                let parsedBody = JSON.parse(body);
+                request(parsedBody.properties.forecast, (error, response, body) => {
+                    console.log("Body", body)
+                })
+                
             }
             else {
                 console.log("Error", body)

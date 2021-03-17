@@ -1,3 +1,4 @@
+
 let zipcode = prompt('Choose a 5 digit zip code to search the weather.')
 let zipPattern = new  RegExp('^[0-9]{5}$');
 let validZip = zipPattern.test(zipcode);
@@ -15,7 +16,7 @@ if (validZip) {
 
         debugger;
 
-        getWeatherByPoint(lat,lng, (data)=> {
+        getWeatherMetaData(lat,lng, (data)=> {
 
         }, (error)=> {
 

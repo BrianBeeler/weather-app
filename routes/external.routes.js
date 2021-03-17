@@ -8,7 +8,8 @@ module.exports = app => {
   
     // Retrieve all published Tutorials
     router.get("/location/:zip", external.getLocationByZip);
-    router.get("/weather/:lat/:lng", external.getWeatherByPoint);
+    router.get("/weather/:lat/:lng", external.getWeatherMetaData);
+ 
 
     app.use('/api/external', router);
   };
