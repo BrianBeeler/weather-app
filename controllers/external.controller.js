@@ -29,12 +29,19 @@ request = request.defaults({
     exports.getWeatherByPoint = (req, res) => {
         console.log("Get weather by point.");
         const lat = req.params.lat;
-        const lon = req.params.lon;
-        let url = "https://api.weather.gov/points/"+lat+","+lon;
+        const lng = req.params.lng;
+        let url = "https://api.weather.gov/points/"+lat+","+lng;
         console.log(url);
 
         request(url, function (error, response, body) {
-            console.log
+            if (!error && response.statusCode == 200) {
+                console.log("Success:",body);
+                res.send(body); 
+            }
+            else {
+                console.log("Error", body)
+                res.send(body);
+            }
         
         });
     }

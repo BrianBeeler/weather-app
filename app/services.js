@@ -16,7 +16,7 @@ function getWeatherByPoint(lat, lng, success, failure) {
         "type": "GET"
     }
 
-    ajax(requestOptions).done(success).fail(failure);
+    $.ajax(requestOptions).done(success).fail(failure);
 }
 
 
