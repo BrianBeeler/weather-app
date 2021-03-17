@@ -58,6 +58,8 @@
 // myProgramFLow();
 
 let zipcode = null;
+lat = null;
+lon = null;
 promptUserForZipcode();
 
 function promptUserForZipcode () {
@@ -84,7 +86,24 @@ function getLocationSuccess(data) {
 
 function getLocationFailure() {
     alert("Unable to get location information for the zipcode. Try again.");
-    promptUserForZipCode();
+    promptUserForZipcode();
+}
+
+function getWeather() {
+    if (lat && lng) {
+        getWeatherMetaData(lat,lng, getWeatherSuccess, getWeatherFailure);
+    }
+}
+
+function getWeatherSuccess(data) {
+    console.log(data);
+    let soonestWeather = data[0];
+    document.querySelector('#weather-condition').innerHTML= soonestWeather.shortForecast;
+    document.querySelector('#weath-temp').innerHTML= soonestWeather.temperature;
+}
+
+function getWeatherFailure() {
+    alert("Cannot currently get weather for that location.");
 }
 
 

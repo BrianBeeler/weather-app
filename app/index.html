@@ -22,8 +22,20 @@
         State<input type="text" name="state"><br>
 
         <label>Is this the location you meant?</labael>
-        <button onclick="getWeather">Yes, check weather!</button><br>
+        <button onclick="getWeather()">Yes, check weather!</button><br>
         <button id="try-again" onclick="promptUserForZipcode()">No, try again.</button>
+    </div>
+
+    <div id="weather-display">
+        <p>Your current forcast is:</p>
+        <p id='weather-condition'></p>, with a temperature of <p id='weath-temp'></p>
+    </div>
+
+    <div>
+        <p>Log in to save this location to your username</p>
+        <label>Username:</label>
+        <input type="text">
+        <button>Save</button>
     </div>
 
 </body>
