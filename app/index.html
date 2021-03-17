@@ -15,11 +15,15 @@
 
 </head>
 <body>
-    <button id="first-button">Button</button>
+  
     <div id="example1">
-        Zip<input type="text" name="zipcode">
-        City<input type="text" name="city">
-        State<input type="text" name="state">
+        Zip<input type="text" name="zipcode"><br>
+        City<input type="text" name="city"><br>
+        State<input type="text" name="state"><br>
+
+        <label>Is this the location you meant?</labael>
+        <button onclick="getWeather">Yes, check weather!</button><br>
+        <button id="try-again" onclick="promptUserForZipcode()">No, try again.</button>
     </div>
 
 </body>

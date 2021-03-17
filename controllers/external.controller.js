@@ -9,9 +9,8 @@ request = request.defaults({
 // Find a single Tutorial with an id
     exports.getLocationByZip = (req, res) => {
         const zip = req.params.zip;
-        zipcode = 42721
         var clientKey = "uIiN6JEncIkxyjKZfYIyVCJ0ycJXmcJAtcPeBRcaCdToVtm8YYm6CvcTXRld1tbo";
-        let url = "https://www.zipcodeapi.com/rest/"+clientKey+"/info.json/" + zipcode + "/degrees"
+        let url = "https://www.zipcodeapi.com/rest/"+clientKey+"/info.json/" + zip + "/degrees"
         console.log(url)
 
         request(url, function (error, response, body) {
@@ -31,15 +30,12 @@ request = request.defaults({
         const lat = req.params.lat;
         const lng = req.params.lng;
         let url = "https://api.weather.gov/points/"+lat+","+lng;
-        console.log(url);
 
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 let parsedBody = JSON.parse(body);
                 request(parsedBody.properties.forecast, (error, response, body) => {
-                    console.log("Body", body)
-                    let pbody = JSON.parse(body);
-                    console.log(pbody.properties.periods);
+                    let pbody = JSON.parse(body);    
                     res.send(pbody.properties.periods);
                 })
                 

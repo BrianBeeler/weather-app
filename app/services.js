@@ -1,7 +1,7 @@
 function getLocationByZip(zipcode, success, failure) {
     
     const reqOptions = {
-        "url": "http://localhost:8080/api/external/location/"+"Caneyville",
+        "url": "http://localhost:8080/api/external/location/"+zipcode,
         "dataType": "json",
         "type": "GET"
     }
