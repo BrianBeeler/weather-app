@@ -17,7 +17,7 @@ if (validZip) {
         debugger;
 
         getWeatherMetaData(lat,lng, (data)=> {
-
+            console.log("Weather Data:", data);
         }, (error)=> {
 
         })

@@ -38,6 +38,9 @@ request = request.defaults({
                 let parsedBody = JSON.parse(body);
                 request(parsedBody.properties.forecast, (error, response, body) => {
                     console.log("Body", body)
+                    let pbody = JSON.parse(body);
+                    console.log(pbody.properties.periods);
+                    res.send(pbody.properties.periods);
                 })
                 
             }
