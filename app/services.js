@@ -11,7 +11,7 @@ function getLocationByZip(zipcode, success, failure) {
 
 function getWeatherByPoint(lat, lng, success, failure) {
     const requestOptions = {
-        "url": "http://localhost:8080/api/external/weather/"+38.8894+"/-77.0352",
+        "url": "http://localhost:8080/api/external/weather/"+lat+"/"+lng,
         "dataType": "json",
         "type": "GET"
     }
