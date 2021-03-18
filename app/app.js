@@ -143,4 +143,12 @@ function login() {
     }
 }
 
+function getUserLocations() {
+    getUserLocationsById(userId, (data)=> {
+        console.log("the location for this user are: ", data )
+    }, () => {
+        console.log("Unable to get locations for this user.")
+    })
+}
+
 

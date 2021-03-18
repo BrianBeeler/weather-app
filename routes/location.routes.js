@@ -6,6 +6,7 @@ module.exports = app => {
   
     // Create a new Tutorial
     router.post("/", locations.create);
+    router.get("/:userid", location.findAll);
 
     app.use('/api/locations', router);
 
