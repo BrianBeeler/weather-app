@@ -1,5 +1,5 @@
 const db = require("../models");
-const User = db.User;
+const User = db.users;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Tutorial
@@ -7,17 +7,18 @@ exports.create = (req, res) => {
 
    console.log("Creating");
       // Validate request
-  if (!req.body.title) {
+  if (!req.body.username) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
     return;
   }
 
+  console.log("req.body.username", req.body.username);
+
   // Create a Tutorial
   const user = {
     username: req.body.username,
-    
   };
 
   // Save Tutorial in the database

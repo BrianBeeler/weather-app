@@ -107,8 +107,15 @@ function getWeatherFailure() {
 }
 
 function saveUserName() {
-    saveUserNameToDB() {
-        
+    username = document.querySelector("#userinput").value
+    console.log("Button clicked");
+    saveUserNameToDB(username,zipcode, saveUserSuccess, saveUserFailure)
+
+    function saveUserSuccess() {
+        console.log("Username save");
+    }
+    function saveUserFailure() {
+
     }
 }
 

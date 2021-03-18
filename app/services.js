@@ -20,6 +20,7 @@ function getWeatherMetaData(lat, lng, success, failure) {
 
 
 function saveUserNameToDB(username, location, success, failure) {
+    console.log("saving user name in service")
     const requestOptions = {
         "url": "http://localhost:8080/api/user/",
         "dataType": "json",
@@ -29,6 +30,10 @@ function saveUserNameToDB(username, location, success, failure) {
             location: location
         }
     }
+
+    console.log(requestOptions, success, failure)
+
+    $.ajax(requestOptions).done(success).fail(failure);
 }
 
 

@@ -7,10 +7,10 @@ exports.create = (req, res) => {
 
    console.log("Creating");
       // Validate request
-  if (!req.body.title) {
-    res.status(400).send({
-      message: "Content can not be empty!"
-    });
+    if (!req.body.title) {
+        res.status(400).send({
+            message: "Content can not be empty!"
+        });
     return;
   }
 

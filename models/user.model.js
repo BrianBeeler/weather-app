@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const User = sequelize.define("tutorial", {
+    const User = sequelize.define("user", {
       username: {
         type: Sequelize.STRING,
         allowNull: false
@@ -20,8 +20,8 @@ module.exports = (sequelize, Sequelize) => {
     User.hasMany(Location, { as: "locations" })
     Location.belongsTo(User, {
         foreignKey: "zip",
-        as: "zip"
+        as: "zipcode"
     })
   
     return User;
-  };
+};
