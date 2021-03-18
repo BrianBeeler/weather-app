@@ -1,7 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
     const Location = sequelize.define("location", {
       userid: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       zipcode: {

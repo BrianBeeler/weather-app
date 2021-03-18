@@ -36,13 +36,13 @@ exports.create = (req, res) => {
     exports.findAll = (req, res) => {
         var condition = {
             where: {
-                userid : +req.params.userid
+                userid : req.params.userid
             }
         }
   
     console.log("Condition", condition);
 
-    Location.findAll({ where: condition })
+    Location.findAll(condition)
       .then(data => {
         res.send(data);
       })
