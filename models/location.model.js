@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const User = sequelize.define("user", {
+    const Location = sequelize.define("location", {
       userid: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -17,4 +17,6 @@ module.exports = (sequelize, Sequelize) => {
           allowNull: false
       }
     })
+
+    return Location;
 };

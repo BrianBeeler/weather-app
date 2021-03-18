@@ -1,11 +1,11 @@
 module.exports = app => {
 
-    const tutorials = require("../controllers/location.controller.js");
+    const locations = require("../controllers/location.controller.js");
   
     var router = require("express").Router();
   
     // Create a new Tutorial
-    router.post("/", location.create);
+    router.post("/", locations.create);
 
     app.use('/api/locations', router);
 

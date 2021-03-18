@@ -30,7 +30,8 @@ app.get("/", (req, res) => {
 
 require("./routes/tutorial.routes")(app);
 require("./routes/external.routes")(app);
-require("./routes/user.routes")(app)
+require("./routes/user.routes")(app);
+require("./routes/location.routes")(app);
 
 app.get('*', function(req, res){
   res.status(404).send();

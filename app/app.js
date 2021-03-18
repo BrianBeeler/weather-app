@@ -60,6 +60,7 @@
 let zipcode = null;
 lat = null;
 lon = null;
+userId = null;
 promptUserForZipcode();
 
 function promptUserForZipcode () {
@@ -125,7 +126,16 @@ function login() {
     function success(data) {
         if (data.id) {
             console.log("Logged in with username: "+data.username);
-            console.log("UserId: ",data.id);
+            userId = data.id
+        }
+        saveUserLocation(userId, zipcode, lat, lng, successLocSave, failureLocSave)
+
+        function successLocSave() {
+            console.log("Location saved too")
+        }
+
+        function failureLocSave() {
+            console.log("Locations not saved")
         }
     }
     function failure(data) {

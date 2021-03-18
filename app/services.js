@@ -46,9 +46,9 @@ function loginWithUserName(username, success, failure) {
     $.ajax(requestOptions).done(success).fail(failure);
 }
 
-function saveUserLocation(userId, zipcode, lat, lng) {
+function saveUserLocation(userId, zipcode, lat, lng, success, failure) {
     const requestOptions = {
-        "url": "http://localhost:8080/api/location
+        "url": "http://localhost:8080/api/locations/",
         "dataType": "json",
         "type": "POST",
         "data": {
