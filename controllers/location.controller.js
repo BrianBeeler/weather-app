@@ -7,21 +7,17 @@ exports.create = (req, res) => {
 
     console.log("Creating");
        // Validate request
-   if (!req.body.userId) {
-     res.status(400).send({
-       message: "Content can not be empty!"
-     });
-     return;
-   }
  
  
-   // Create a Tutorial
+   // Create a Location
    const location = {
-     userId: req.body.userId,
+     userid: req.body.userid,
      zipcode: req.body.zipcode,
      lat: req.body.lat,
      lng: req.body.lng
    };
+
+   console.log("Creating Location: ", location);
  
    // Save Tutorial in the database
    Location.create(location)
@@ -31,7 +27,7 @@ exports.create = (req, res) => {
      .catch(err => {
        res.status(500).send({
          message:
-           err.message || "Some error occurred while creating the Tutorial."
+           err.message || "Some error occurred while creating the Location."
        });
      });
  };
