@@ -1,5 +1,5 @@
 const db = require("../models");
-const Tutorial = db.tutorials;
+const User = db.User;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Tutorial
@@ -15,14 +15,13 @@ exports.create = (req, res) => {
   }
 
   // Create a Tutorial
-  const tutorial = {
-    title: req.body.title,
-    description: req.body.description,
-    published: req.body.published ? req.body.published : false
+  const user = {
+    username: req.body.username,
+    
   };
 
   // Save Tutorial in the database
-  Tutorial.create(tutorial)
+  User.create(user)
     .then(data => {
       res.send(data);
     })
@@ -54,15 +53,15 @@ exports.findAll = (req, res) => {
 
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
-    const id = req.params.id;
+    const username = req.params.username;
 
-    Tutorial.findByPk(id)
+    User.findByPk(username)
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving Tutorial with id=" + id
+          message: "Error retrieving User with username=" + username
         });
       })
 };
