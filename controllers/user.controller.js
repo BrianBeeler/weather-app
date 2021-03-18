@@ -34,37 +34,42 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all Tutorials from the database.
-exports.findAll = (req, res) => {
-    const title = req.query.title;
-    var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+// // Retrieve all Tutorials from the database.
+// exports.findAll = (req, res) => {
+//     const title = req.query.title;
+//     var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
   
-    Tutorial.findAll({ where: condition })
-      .then(data => {
-        res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving tutorials."
-        });
-      });
+//     Tutorial.findAll({ where: condition })
+//       .then(data => {
+//         res.send(data);
+//       })
+//       .catch(err => {
+//         res.status(500).send({
+//           message:
+//             err.message || "Some error occurred while retrieving tutorials."
+//         });
+//       });
   
-};
+// };
 
-// Find a single Tutorial with an id
-exports.findOne = (req, res) => {
+// Find a single User with an id
+exports.login = (req, res) => {
     const username = req.params.username;
+    console.log("Logging in with username:"+username);
 
-    User.findByPk(username)
-      .then(data => {
+    User.findOne({
+        where: {
+            username: username
+        }
+    })
+    .then(data => {
         res.send(data);
-      })
-      .catch(err => {
+    })
+    .catch(err => {
         res.status(500).send({
           message: "Error retrieving User with username=" + username
         });
-      })
+    })
 };
 
 // Update a Tutorial by the id in the request

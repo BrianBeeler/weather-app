@@ -63,7 +63,7 @@ lon = null;
 promptUserForZipcode();
 
 function promptUserForZipcode () {
-    console.log("Prompt function.");
+
     zipcode = prompt('Choose a 5 digit zip code to search the weather.')
     let zipPattern = new  RegExp('^[0-9]{5}$');
     let validZip = zipPattern.test(zipcode);
@@ -96,7 +96,6 @@ function getWeather() {
 }
 
 function getWeatherSuccess(data) {
-    console.log(data);
     let soonestWeather = data[0];
     document.querySelector('#weather-condition').innerHTML= soonestWeather.shortForecast;
     document.querySelector('#weath-temp').innerHTML= soonestWeather.temperature;
@@ -114,7 +113,21 @@ function saveUserName() {
     function saveUserSuccess() {
         console.log("Username save");
     }
-    function saveUserFailure() {
+    function saveUserFailure(error) {
+        console.log("Error", error);
+    }
+}
+
+function login() {
+    username = document.querySelector("#userlogin").value
+    loginWithUserName(username, success, failure);
+
+    function success(data) {
+        if (data.id) {
+            console.log("Logged in with username:"+data.username);
+        }
+    }
+    function failure(data) {
 
     }
 }
