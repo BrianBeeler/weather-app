@@ -130,8 +130,8 @@ function login() {
         }
         saveUserLocation(userId, zipcode, lat, lng, successLocSave, failureLocSave)
 
-        function successLocSave() {
-            console.log("Location saved too")
+        function successLocSave(data) {
+            console.log("Location saved too", data)
         }
 
         function failureLocSave() {

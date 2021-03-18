@@ -62,16 +62,15 @@ function saveUserLocation(userid, zipcode, lat, lng, success, failure) {
     $.ajax(requestOptions).done(success).fail(failure);
 }
 
-function getUserLocations(userid, success, failure) {
+function getUserLocationsById(userid, success, failure) {
     const reqOptions = {
         "url": "http://localhost:8080/api/locations/"+userid,
         "dataType": "json",
         "type": "GET",
     }
+    $.ajax(reqOptions).done(success).fail(failure);
 }
 
-$.ajax(requestOptions).done(success).fail(failure);
-}
 
 // function getWeatherData(url, success, failure) {
 //     const requestOptions = {
