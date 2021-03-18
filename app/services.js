@@ -18,6 +18,20 @@ function getWeatherMetaData(lat, lng, success, failure) {
     $.ajax(requestOptions).done(success).fail(failure);
 }
 
+
+function saveUserNameToDB(username, location, success, failure) {
+    const requestOptions = {
+        "url": "http://localhost:8080/api/user/",
+        "dataType": "json",
+        "type": "POST",
+        "data": {
+            username: username,
+            location: location
+        }
+    }
+}
+
+
 // function getWeatherData(url, success, failure) {
 //     const requestOptions = {
 //         "url": "http://localhost:8080/api/external/weather/"+url

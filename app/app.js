@@ -106,4 +106,10 @@ function getWeatherFailure() {
     alert("Cannot currently get weather for that location.");
 }
 
+function saveUserName() {
+    saveUserNameToDB() {
+        
+    }
+}
+
 
