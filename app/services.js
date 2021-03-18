@@ -46,6 +46,22 @@ function loginWithUserName(username, success, failure) {
     $.ajax(requestOptions).done(success).fail(failure);
 }
 
+function saveUserLocation(userId, zipcode, lat, lng) {
+    const requestOptions = {
+        "url": "http://localhost:8080/api/location
+        "dataType": "json",
+        "type": "POST",
+        "data": {
+            userId: userId,
+            zipcode: zipcode,
+            lat: lat,
+            lng: lng
+        }
+    }
+
+    $.ajax(requestOptions).done(success).fail(failure);
+}
+
 
 // function getWeatherData(url, success, failure) {
 //     const requestOptions = {

@@ -124,7 +124,8 @@ function login() {
 
     function success(data) {
         if (data.id) {
-            console.log("Logged in with username:"+data.username);
+            console.log("Logged in with username: "+data.username);
+            console.log("UserId: ",data.id);
         }
     }
     function failure(data) {
