@@ -13,17 +13,22 @@
     <script src="./services.js"></script>
     <script src="./app.js"></script>
 
+
 </head>
 <body>
-  
-    <div id="example1">
-        Zip<input type="text" name="zipcode"><br>
-        City<input type="text" name="city"><br>
-        State<input type="text" name="state"><br>
+    <h1 class="main-heading">Brian's Weather App</h1>
+    <div id="location-info">
+        Zip: <input type="text" name="zipcode"><br>
+        City: <input type="text" name="city"><br>
+        State: <input type="text" name="state"><br>
+        <br>
+        
+    </div>
 
-        <label>Is this the location you meant?</labael>
-        <button onclick="getWeather()">Yes, check weather!</button><br>
-        <button id="try-again" onclick="promptUserForZipcode()">No, try again.</button>
+    <div id="location-buttons">
+        <label>Is this the location you meant?</label>
+        <button class="btn fourth" onclick="getWeather()">Yes, check weather!</button><br>
+        <button id="try-again" class="btn first" onclick="promptUserForZipcode()">No, try again.</button>
     </div>
 
     <div id="weather-display">
@@ -44,4 +49,5 @@
         <button onclick="getUserLocations()">Get location for a loggedd in user.</button>
     </div>
 </body>
+<link rel="stylesheet" href="./styles.css"></link>
 </html>

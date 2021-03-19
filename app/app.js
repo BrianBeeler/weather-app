@@ -61,7 +61,7 @@ let zipcode = null;
 lat = null;
 lon = null;
 userId = null;
-promptUserForZipcode();
+//promptUserForZipcode();
 
 function promptUserForZipcode () {
 
@@ -91,6 +91,7 @@ function getLocationFailure() {
 }
 
 function getWeather() {
+    console.log("Test")
     if (lat && lng) {
         getWeatherMetaData(lat,lng, getWeatherSuccess, getWeatherFailure);
     }
