@@ -36,15 +36,18 @@
     <div id="login-container">
         <div id="weather-display">
             <h2>Your current forcast is:</h2>
-            <p><span id='weather-condition'></span>, with a temperature of <span id='weath-temp'></span></p>
+            <p><span id='weather-condition'></span>, with a temperature of <span id='weath-temp'></span>.</p>
         </div>
 
         <div id="signinlogin">
-            <p>Log in to save this location to your username</p>
+            <p>Sign Up Below:</p>
             <label>Username:</label>
             <input type="text" id="userinput">
             <button onclick="saveUserName()">Save</button>
-            <p class="error" id="validation error">Error, try signing in.</p>
+            <p class="success" id="save-user-success">Congrats! You can sign in now!</p>
+            <p class="error" id="save-user-error">Error. You may already have an account. Try signing in.</p>
+            <br>
+            <label>Login:</label>
             <input type="text" id="userlogin">
             <button onclick="login()">Login</button>
         </div>

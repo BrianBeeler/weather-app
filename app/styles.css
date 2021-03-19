@@ -28,6 +28,10 @@
     width: 200px;
 }
 
+.success {
+    display: none;;
+}
+
 
 body {
     background-color: #79b0d4;
@@ -41,7 +45,15 @@ body {
     display: flex;
 }
 
+#signinlogin {
+    text-align: center;
+}
+
 #login-container {
+    display: none;
+}
+
+.error {
     display: none;
 }
 

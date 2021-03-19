@@ -100,7 +100,6 @@ function getWeather() {
 function getWeatherSuccess(data) {
     if (data && data.length > 0) {
         let soonestWeather = data[0];
-        debugger;
         document.querySelector("#splash").style.display = "none";
         document.querySelector("#login-container").style.display = "block";   
         document.querySelector('#weather-condition').innerHTML= soonestWeather.shortForecast;
@@ -122,9 +121,15 @@ function saveUserName() {
 
     function saveUserSuccess() {
         console.log("Username save");
+        document.querySelector("#save-user-success").style.display = "inline-block";
+        document.querySelector("#save-user-error").style.display = "none";
+        // Append success message
     }
     function saveUserFailure(error) {
         console.log("Error", error);
+        document.querySelector("#save-user-success").style.display = "none";
+        document.querySelector("#save-user-error").style.display =  "inline-block";
+        // Append error message
     }
 }
 
