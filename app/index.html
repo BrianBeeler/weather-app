@@ -16,37 +16,41 @@
 
 </head>
 <body>
-    <h1 class="main-heading wood-text">Brian's Weather App</h1>
-    <div id="location-info">
-        Zip: <input type="text" name="zipcode" readonly><br>
-        City: <input type="text" name="city" readonly><br>
-        State: <input type="text" name="state" readonly><br>
-        <br>
-        
-    </div>
 
-    <div id="location-buttons">
-        <label>Is this the location you meant?</label>
-        <button class="btn fourth" onclick="getWeather()">Yes, check weather!</button><br>
-        <button id="try-again" class="btn first" onclick="promptUserForZipcode()">No, try again.</button>
-    </div>
+        <h1 class="main-heading wood-text">Brian's Weather App</h1>
+    <div id="splash">
+        <div id="location-info">
+            Zip: <input type="text" name="zipcode" readonly><br>
+            City: <input type="text" name="city" readonly><br>
+            State: <input type="text" name="state" readonly><br>
+            <br>
+            
+        </div>
 
-    <div id="weather-display">
-        <h2>Your current forcast is:</h2>
-        <p><span id='weather-condition'></span>, with a temperature of <span id='weath-temp'></span></p>
-    </div>
+        <div id="location-buttons">
+            <label>Is this the location you meant?</label>
+            <button class="btn fourth" onclick="getWeather()">Yes, check weather!</button><br>
+            <button id="try-again" class="btn first" onclick="promptUserForZipcode()">No, try again.</button>
+        </div>
+    </div>   
+    <div id="login-container">
+        <div id="weather-display">
+            <h2>Your current forcast is:</h2>
+            <p><span id='weather-condition'></span>, with a temperature of <span id='weath-temp'></span></p>
+        </div>
 
-    <div id="signinlogin">
-        <p>Log in to save this location to your username</p>
-        <label>Username:</label>
-        <input type="text" id="userinput">
-        <button onclick="saveUserName()">Save</button>
-        <p class="error" id="validation error">Error, try signing in.</p>
-        <input type="text" id="userlogin">
-        <button onclick="login()">Login</button>
-    </div>
-    <div id="getlocations">
-        <button onclick="getUserLocations()">Get location for a loggedd in user.</button>
+        <div id="signinlogin">
+            <p>Log in to save this location to your username</p>
+            <label>Username:</label>
+            <input type="text" id="userinput">
+            <button onclick="saveUserName()">Save</button>
+            <p class="error" id="validation error">Error, try signing in.</p>
+            <input type="text" id="userlogin">
+            <button onclick="login()">Login</button>
+        </div>
+        <div id="getlocations">
+            <button onclick="getUserLocations()">Get location for a loggedd in user.</button>
+        </div>
     </div>
 </body>
 <link rel="stylesheet" href="./styles.css"></link>

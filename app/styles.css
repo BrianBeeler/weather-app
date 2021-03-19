@@ -29,7 +29,6 @@
 }
 
 
-
 body {
     background-color: #79b0d4;
     color: #104070;
@@ -39,14 +38,10 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    display: none;
+    display: flex;
 }
 
-#signinlogin {
-    display: none;
-}
-
-#getlocations {
+#login-container {
     display: none;
 }
 

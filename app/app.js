@@ -100,7 +100,9 @@ function getWeather() {
 function getWeatherSuccess(data) {
     if (data && data.length > 0) {
         let soonestWeather = data[0];
-        document.querySelector("#weather-display").style.display = "flex";
+        debugger;
+        document.querySelector("#splash").style.display = "none";
+        document.querySelector("#login-container").style.display = "block";   
         document.querySelector('#weather-condition').innerHTML= soonestWeather.shortForecast;
         document.querySelector('#weath-temp').innerHTML= soonestWeather.temperature;
     } else {
