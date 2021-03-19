@@ -32,6 +32,10 @@
     display: none;;
 }
 
+#signed-in {
+    display: none;
+}
+
 
 body {
     background-color: #79b0d4;

@@ -61,6 +61,7 @@ let zipcode = null;
 lat = null;
 lon = null;
 userId = null;
+username = null;
 promptUserForZipcode();
 
 function promptUserForZipcode () {
@@ -140,7 +141,10 @@ function login() {
     function success(data) {
         if (data.id) {
             console.log("Logged in with username: "+data.username);
-            userId = data.id
+            userId = data.id;
+            username = data.username;
+            document.querySelector("#signed-in").style.display = "inline"
+            document.querySelector("#signed-in-name").append(`${username}`);
         }
         saveUserLocation(userId, zipcode, lat, lng, successLocSave, failureLocSave)
 
@@ -163,6 +167,10 @@ function getUserLocations() {
     }, () => {
         console.log("Unable to get locations for this user.")
     })
+}
+
+function onSignedIn() {
+    console.log("On Signed In Called.");
 }
 
 
