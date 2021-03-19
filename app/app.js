@@ -145,6 +145,8 @@ function login() {
             username = data.username;
             document.querySelector("#signed-in").style.display = "inline"
             document.querySelector("#signed-in-name").append(`${username}`);
+            const loginSuccess = new Event('loginSuccess');
+            document.dispatchEvent(loginSuccess);
         }
         saveUserLocation(userId, zipcode, lat, lng, successLocSave, failureLocSave)
 
@@ -174,3 +176,6 @@ function onSignedIn() {
 }
 
 
+document.addEventListener('loginSuccess', function(e) {
+    console.log("DID LOGIN!!!!");
+});
