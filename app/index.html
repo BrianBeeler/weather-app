@@ -16,11 +16,11 @@
 
 </head>
 <body>
-    <h1 class="main-heading">Brian's Weather App</h1>
+    <h1 class="main-heading wood-text">Brian's Weather App</h1>
     <div id="location-info">
-        Zip: <input type="text" name="zipcode"><br>
-        City: <input type="text" name="city"><br>
-        State: <input type="text" name="state"><br>
+        Zip: <input type="text" name="zipcode" readonly><br>
+        City: <input type="text" name="city" readonly><br>
+        State: <input type="text" name="state" readonly><br>
         <br>
         
     </div>
@@ -32,11 +32,11 @@
     </div>
 
     <div id="weather-display">
-        <p>Your current forcast is:</p>
-        <p id='weather-condition'></p>, with a temperature of <p id='weath-temp'></p>
+        <h2>Your current forcast is:</h2>
+        <p><span id='weather-condition'></span>, with a temperature of <span id='weath-temp'></span></p>
     </div>
 
-    <div>
+    <div id="signinlogin">
         <p>Log in to save this location to your username</p>
         <label>Username:</label>
         <input type="text" id="userinput">
@@ -45,7 +45,7 @@
         <input type="text" id="userlogin">
         <button onclick="login()">Login</button>
     </div>
-    <div>
+    <div id="getlocations">
         <button onclick="getUserLocations()">Get location for a loggedd in user.</button>
     </div>
 </body>

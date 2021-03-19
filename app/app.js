@@ -61,7 +61,7 @@ let zipcode = null;
 lat = null;
 lon = null;
 userId = null;
-//promptUserForZipcode();
+promptUserForZipcode();
 
 function promptUserForZipcode () {
 
@@ -98,9 +98,15 @@ function getWeather() {
 }
 
 function getWeatherSuccess(data) {
-    let soonestWeather = data[0];
-    document.querySelector('#weather-condition').innerHTML= soonestWeather.shortForecast;
-    document.querySelector('#weath-temp').innerHTML= soonestWeather.temperature;
+    if (data && data.length > 0) {
+        let soonestWeather = data[0];
+        document.querySelector("#weather-display").style.display = "flex";
+        document.querySelector('#weather-condition').innerHTML= soonestWeather.shortForecast;
+        document.querySelector('#weath-temp').innerHTML= soonestWeather.temperature;
+    } else {
+        throw Error("No Weather Data");
+    }
+    
 }
 
 function getWeatherFailure() {

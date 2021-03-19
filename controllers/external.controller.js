@@ -31,10 +31,15 @@ request = request.defaults({
 
         request(url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
-                let parsedBody = JSON.parse(body);
-                request(parsedBody.properties.forecast, (error, response, body) => {
-                    let pbody = JSON.parse(body);    
-                    res.send(pbody.properties.periods);
+                parsedBody = JSON.parse(body);
+                let nextUrl = parsedBody.properties.forecast;
+                request(nextUrl, (error, response, body) => {
+                    if (error || response.statusCode !== 200) {
+                        res.status(response.statusCode).json(error);
+                    } else {
+                        let pbody = JSON.parse(body);    
+                        res.send(pbody.properties.periods);
+                    }
                 })
                 
             }
