@@ -154,7 +154,6 @@ document.addEventListener('user-data-saved', async function(e) {
 
 });
 
-
 // When whether info is saved, update the dom appropriately
 document.addEventListener('weather-info-saved', () => {
     document.querySelector('#login-container').style.display = 'none';

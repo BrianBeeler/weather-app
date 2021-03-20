@@ -1,5 +1,7 @@
-const { TimeoutError } = require("sequelize/types");
+// TODO: Refactor promises and callbacks into async/await
 
+
+// Gets a latitude, longitude, and other info based on zipcode
 function getLocationByZip(zipcode, success, failure) {
     
     const reqOptions = {
@@ -11,6 +13,8 @@ function getLocationByZip(zipcode, success, failure) {
     $.ajax(reqOptions).done(success).fail(failure);
 }
 
+// Poorly named, gets whether info, not metadata
+// TODO: rename
 function getWeatherMetaData(lat, lng, success, failure) {
     const requestOptions = {
         "url": "http://localhost:8080/api/external/weather/"+lat+"/"+lng,
@@ -20,7 +24,8 @@ function getWeatherMetaData(lat, lng, success, failure) {
     return $.ajax(requestOptions).done(success).fail(failure);
 }
 
-
+// Saves a new user to the database
+// TODO: remove "location"
 function saveUserNameToDB(username, location, success, failure) {
     const requestOptions = {
         "url": "http://localhost:8080/api/user/",
@@ -35,6 +40,7 @@ function saveUserNameToDB(username, location, success, failure) {
     $.ajax(requestOptions).done(success).fail(failure);
 }
 
+// Gets userid for unique username as login token
 async function loginWithUserName(username, success, failure) {
     const requestOptions = {
         "url": "http://localhost:8080/api/user/login/"+username,
@@ -48,6 +54,7 @@ async function loginWithUserName(username, success, failure) {
     $.ajax(requestOptions).done(success).fail(failure);
 }
 
+// saves a location and the userid that signed in with that location
 function saveUserLocation(userid, zipcode, lat, lng, success, failure) {
     const requestOptions = {
         "url": "http://localhost:8080/api/locations/",
@@ -64,6 +71,7 @@ function saveUserLocation(userid, zipcode, lat, lng, success, failure) {
     $.ajax(requestOptions).done(success).fail(failure);
 }
 
+// gets all locations for a given user, based on userid
 function getUserLocationsById(userid, success, failure) {
     const reqOptions = {
         "url": "http://localhost:8080/api/locations/"+userid,
@@ -73,26 +81,6 @@ function getUserLocationsById(userid, success, failure) {
     return $.ajax(reqOptions).done(success).fail(failure);
 }
 
-async function getAllWeatherForUser(userid, success, failure) {
-    const reqOptions = {
-        "url": "http://localhost:8080/api/locations/weather/"+userid,
-        "dataType": "json",
-        "type": "GET",
-    }
-    response = await $.ajax(reqOptions)
-    return response;
-}
-
-
-
-// function getWeatherData(url, success, failure) {
-//     const requestOptions = {
-//         "url": "http://localhost:8080/api/external/weather/"+url
-//         "dataType": "json",
-//         "type": "POST"
-//     }
-//     $.ajax(requestOptions).done(success).fail(failure);
-// }
 
 
 
