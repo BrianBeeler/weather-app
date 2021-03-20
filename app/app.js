@@ -6,6 +6,7 @@
 //     let lng = null;
 
 
+
 // const { getLocationByZip } = require("../controllers/external.controller");
 
 
@@ -186,23 +187,26 @@ document.addEventListener('loginSuccess', function(e) {
     console.log("DID LOGIN!!!!");
 });
 
-document.addEventListener('user-data-saved', function(e) {
-    getUserLocationsById(userId, (data)=> {
+document.addEventListener('user-data-saved', async function(e) {
+    
+        let locations = await getUserLocationsById(userId)
         
+        let weatherPromises = await locations.map(async (location) => {
+        let weatherData = await getWeatherMetaData(location.lat, location.lng)
+
+            return { 
+                zipcode: location.zipcode,
+                lat: location.lat,
+                lng:location.lng,
+                current:weatherData[0].shortForecast,
+                temperature: weatherData[0].temperature
+            }
+        });
+
+        Promise.all(weatherPromises).then((weatherInfo) => {
+            console.log("Weather Info: ", weatherInfo);
+        })
+
         
-        for (i=0; i < data.length; i++) {
-            getWeatherMetaData(data[i].lat, data[i].lng, (data2) => {
-                userWeather.push({
-                    zipcode: data.zipcode,
-                    condition: data2[0].shortForecast,
-                    temperature: data2[0].temperature
-                })
-            }) 
-        }
 
-        console.log(userWeather);
-
-    }, () => {
-        console.log("Unable to get locations for this user.")
-    })
 });

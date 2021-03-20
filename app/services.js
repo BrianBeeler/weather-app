@@ -1,3 +1,4 @@
+
 function getLocationByZip(zipcode, success, failure) {
     
     const reqOptions = {
@@ -15,7 +16,7 @@ function getWeatherMetaData(lat, lng, success, failure) {
         "dataType": "json",
         "type": "GET"
     }
-    $.ajax(requestOptions).done(success).fail(failure);
+    return $.ajax(requestOptions).done(success).fail(failure);
 }
 
 
@@ -68,16 +69,17 @@ function getUserLocationsById(userid, success, failure) {
         "dataType": "json",
         "type": "GET",
     }
-    $.ajax(reqOptions).done(success).fail(failure);
+    return $.ajax(reqOptions).done(success).fail(failure);
 }
 
-function getAllWeatherForUser(userid, success, failure) {
+async function getAllWeatherForUser(userid, success, failure) {
     const reqOptions = {
         "url": "http://localhost:8080/api/locations/weather/"+userid,
         "dataType": "json",
         "type": "GET",
     }
-    $.ajax(reqOptions).done(success).fail(failure);
+    response = await $.ajax(reqOptions)
+    return response;
 }
 
 
