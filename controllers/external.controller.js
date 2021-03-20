@@ -44,14 +44,12 @@ exports.getWeatherMetaData = (req, res) => {
                     let pbody = JSON.parse(body);    
                     res.send(pbody.properties.periods);
                 }
-            })
-            
+            })   
         }
         else {
             console.error("Error!", error)
             res.status(500).json({ error: error });
-        }
-    
+        }    
     });
 }
 

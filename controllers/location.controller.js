@@ -3,53 +3,46 @@ const db = require("../models");
 const Location = db.locations;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Tutorial
+// Create and Save a new Location
 exports.create = async (req, res) => {
 
-    console.log("Creating");
-       // Validate request
- 
- 
-   // Create a Location
-   const location = {
-     userid: req.body.userid,
-     zipcode: req.body.zipcode,
-     lat: req.body.lat,
-     lng: req.body.lng
-   };
-
-   console.log("Creating Location: ", location);
- 
-   
-   let selector = {
-       where: {
+    // Create a Location
+    const location = {
+        userid: req.body.userid,
+        zipcode: req.body.zipcode,
+        lat: req.body.lat,
+        lng: req.body.lng
+    }; 
+    let selector = {
+        where: {
             userid: req.body.userid,
             zipcode: req.body.zipcode,
-       }
-   }
+        }
+    }
 
-   let found = await Location.findOne(selector);
-   if (!found) {
-        // Save Tutorial in the database
+    // If one's there, just return that one.
+    // if one isn't there make one
+    let found = await Location.findOne(selector);
+    if (!found) {
+        // Save Location in the database
         Location.create(location)
-
         .then(data => {
-          res.send(data);
+            res.send(data);
         })
         .catch(err => {
-          res.status(500).send({
+            res.status(500).send({
             message:
-              err.message || "Some error occurred while creating the Location."
-          });
+                err.message || "Some error occurred while creating the Location."
+            });
         });
-   } else {
-       res.send(found);
-   }
+    } else {
+        res.send(found);
+    }
 
  };
 
  // Retrieve all Tutorials from the database.
-    exports.findAll = (req, res) => {
+exports.findAll = (req, res) => {
 
     sequelize.query("SELECT distinct * FROM locations where userid="+req.params.userid, 
         { type: db.Sequelize.QueryTypes.SELECT }
@@ -67,49 +60,9 @@ exports.create = async (req, res) => {
             err.message || "Some error occurred while retrieving locations for this user"
         });
       });
-  
-    };
+};
 
 
-    exports.findAllWithWeather = (req, res) => {
-        var condition = {
-            where: {
-                userid : req.params.userid
-            }
-        }
-  
-    console.log("Condition", condition);
-
-    Location.findAll(condition)
-      .then(data => {
-        let asynfunctions = []
-        for (i=0;i<data.length;i++) {
-            asyncfunctions.push(()=> 
-            {
-                console.log("function did run");
-                lat=data[i].lat;
-                lng=data[i].lng
-                let url = "https://api.weather.gov/points/"+lat+","+lng;
-                goGetWeatherData(url);
-            })()
-        }
-
-        Promise.all(asynfunctions).then((results) =>{
-            console.log("Results", results);
-            res.send(results)
-        })
-        // for all locations, get whether, return payload
-        
-
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving locations for this user"
-        });
-      });
-  
-    };
 
 
   
