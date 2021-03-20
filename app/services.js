@@ -1,3 +1,4 @@
+const { TimeoutError } = require("sequelize/types");
 
 function getLocationByZip(zipcode, success, failure) {
     
@@ -34,7 +35,7 @@ function saveUserNameToDB(username, location, success, failure) {
     $.ajax(requestOptions).done(success).fail(failure);
 }
 
-function loginWithUserName(username, success, failure) {
+async function loginWithUserName(username, success, failure) {
     const requestOptions = {
         "url": "http://localhost:8080/api/user/login/"+username,
         "dataType": "json",

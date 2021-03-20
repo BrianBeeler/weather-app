@@ -1,63 +1,4 @@
-// let myProgramFLow = () => {
-//     let zipcode = prompt('Choose a 5 digit zip code to search the weather.')
-//     let zipPattern = new  RegExp('^[0-9]{5}$');
-//     let validZip = zipPattern.test(zipcode);
-//     let lat = null;
-//     let lng = null;
-
-
-
-// const { getLocationByZip } = require("../controllers/external.controller");
-
-
-//     if (validZip) {
-//         getLocationByZip(zipcode, (data)=>{
-
-//             console.log("Data", data);
-
-//             lat = data.lat;
-//             lng = data.lng;
-
-//             document.querySelector("[name='zipcode']").value = zipcode;
-//             document.querySelector("[name='city']").value = data.city;
-//             document.querySelector("[name='state']").value = data.state; 
-
-
-
-//             // Success flow
-            
-//             // display location data
-//             // ask if correct
-//             // render check whether and try again buttons
-
-//         }, (error) => {
-//             console.log("Error")
-
-//             // render: there was an error
-//             // render: try again button
-
-//         })
-
-//     } else {
-//         console.log("Invalid zip");
-//         // render improper zipcode message with try again button
-//         alert("Not a valid zip code, please try again");
-//         programFLow();
-//     }
-
-//     let getWeather = () => {
-//         getWeatherMetaData(lat,lng, (data)=> {
-//             console.log("Weather Data:", data);
-//         }, (error)=> {
-        
-//         })
-//     }
-
-// }
-
-
-
-// myProgramFLow();
+// Set initial variables
 
 let zipcode = null;
 lat = null;
@@ -66,8 +7,11 @@ userId = null;
 username = null;
 userLocations = null;
 userWeather = [];
+
 promptUserForZipcode();
 
+// Prompts and validates a zipcode,
+// gets location for that zipcode
 function promptUserForZipcode () {
 
     zipcode = prompt('Choose a 5 digit zip code to search the weather.')
@@ -79,72 +23,83 @@ function promptUserForZipcode () {
     } else {
         getLocationByZip(zipcode, getLocationSuccess, getLocationFailure)
     }
-}
 
-function getLocationSuccess(data) {
-    lat = data.lat;
-    lng = data.lng;
-
-    document.querySelector("[name='zipcode']").value = zipcode;
-    document.querySelector("[name='city']").value = data.city;
-    document.querySelector("[name='state']").value = data.state; 
-}
-
-function getLocationFailure() {
-    alert("Unable to get location information for the zipcode. Try again.");
-    promptUserForZipcode();
-}
-
-function getWeather() {
-    console.log("Test")
-    if (lat && lng) {
-        getWeatherMetaData(lat,lng, getWeatherSuccess, getWeatherFailure);
-    }
-}
-
-function getWeatherSuccess(data) {
-    if (data && data.length > 0) {
-        let soonestWeather = data[0];
-        document.querySelector("#splash").style.display = "none";
-        document.querySelector("#login-container").style.display = "block";   
-        document.querySelector('#weather-condition').innerHTML= soonestWeather.shortForecast;
-        document.querySelector('#weath-temp').innerHTML= soonestWeather.temperature;
-    } else {
-        throw Error("No Weather Data");
+    function getLocationSuccess(data) {
+        lat = data.lat;
+        lng = data.lng;
+    
+        document.querySelector("[name='zipcode']").value = zipcode;
+        document.querySelector("[name='city']").value = data.city;
+        document.querySelector("[name='state']").value = data.state; 
     }
     
+    function getLocationFailure() {
+        alert("Unable to get location information for the zipcode. Try again.");
+        promptUserForZipcode();
+    }
+    
+
 }
 
-function getWeatherFailure() {
-    alert("Cannot currently get weather for that location.");
+// Tied to a button click event in #location-buttons div
+function getWeather() {
+    if (lat && lng) {
+        getWeatherMetaData(lat,lng, getWeatherSuccess, getWeatherFailure);
+        
+        function getWeatherSuccess(data) {
+            if (data && data.length > 0) {
+                let soonestWeather = data[0];
+                document.querySelector("#splash").style.display = "none";
+                document.querySelector("#login-container").style.display = "block";   
+                document.querySelector('#weather-condition').innerHTML= soonestWeather.shortForecast;
+                document.querySelector('#weath-temp').innerHTML= soonestWeather.temperature;
+            } else {
+                throw Error("No Weather Data");
+            }
+            
+        }
+
+        function getWeatherFailure() {
+            alert("Cannot currently get weather for that location.");
+        }
+    }
 }
 
+// Tied to save button
 function saveUserName() {
     username = document.querySelector("#userinput").value
     console.log("Button clicked");
     saveUserNameToDB(username,zipcode, saveUserSuccess, saveUserFailure)
 
+    // Append success message, remove error message
     function saveUserSuccess() {
         console.log("Username save");
         document.querySelector("#save-user-success").style.display = "inline-block";
         document.querySelector("#save-user-error").style.display = "none";
-        // Append success message
     }
+
+    // Append success error message, remove success message
     function saveUserFailure(error) {
         console.log("Error", error);
         document.querySelector("#save-user-success").style.display = "none";
         document.querySelector("#save-user-error").style.display =  "inline-block";
-        // Append error message
     }
 }
 
+// Tied to login button
 function login() {
     username = document.querySelector("#userlogin").value
     loginWithUserName(username, success, failure);
+    let timeout = true;
+
+    setTimeout(()=> {
+        if (timeout) {
+            alert("Request timed out. Do you have an account?");
+        }
+    }, 4000)
 
     function success(data) {
         if (data.id) {
-            console.log("Logged in with username: "+data.username);
             userId = data.id;
             username = data.username;
             document.querySelector("#signed-in").style.display = "inline"
@@ -155,14 +110,15 @@ function login() {
         saveUserLocation(userId, zipcode, lat, lng, successLocSave, failureLocSave)
 
         function successLocSave(data) {
-            console.log("Location saved too", data)
+            timeout = false;
             userLocations = data;
             const UserDataSaved = new Event('user-data-saved');
             document.dispatchEvent(UserDataSaved);
         }
 
         function failureLocSave() {
-            console.log("Locations not saved")
+            timeout = false;
+            alert("Error signing in. Do you have an account?")
         }
     }
     function failure(data) {
@@ -215,7 +171,7 @@ document.addEventListener('user-data-saved', async function(e) {
 });
 
 document.addEventListener('weather-info-saved', () => {
-    document.querySelector('#signinlogin').style.display = 'none';
+    document.querySelector('#login-container').style.display = 'none';
     let yourLoc = document.querySelector("#your-locations");
     yourLoc.style.display = 'flex';
     yourLoc.innerHTML = '';

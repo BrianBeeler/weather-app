@@ -1,66 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="./services.js"></script>
-    <script src="./app.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="./services.js"></script>
+        <script src="./app.js"></script>
 
 
-</head>
-<body>
-
+    </head>
+    <body>
         <h1 class="main-heading wood-text">Brian's Weather App</h1>
-    <div id="splash">
-        <div id="location-info">
-            Zip: <input type="text" name="zipcode" readonly><br>
-            City: <input type="text" name="city" readonly><br>
-            State: <input type="text" name="state" readonly><br>
-            <br>
-            
+        <div id="splash">
+            <div id="location-info">
+                Zip: <input type="text" name="zipcode" readonly><br>
+                City: <input type="text" name="city" readonly><br>
+                State: <input type="text" name="state" readonly><br>
+                <br>      
+            </div>
+            <div id="location-buttons">
+                <label>Is this the location you meant?</label>
+                <button class="btn fourth" onclick="getWeather()">Yes, check weather!</button><br>
+                <button id="try-again" class="btn first" onclick="promptUserForZipcode()">No, try again.</button>
+            </div>
+        </div>   
+        <div id="login-container">
+            <div id="weather-display">
+                <h2>Your current forcast is:</h2>
+                <p><span id='weather-condition'></span>, with a temperature of <span id='weath-temp'></span>.</p>
+            </div>
+            <div id="signinlogin">
+                <p>Sign Up Below:</p>
+                <fieldset>
+                    <label>Username:</label>
+                    <input type="text" id="userinput">
+                    <button onclick="saveUserName()">Save</button>
+                    <p class="success" id="save-user-success">Congrats! You can sign in now!</p>
+                    <p class="error" id="save-user-error">Error. You may already have an account. Try signing in.</p>
+                
+                </fieldset>
+                <fieldset>
+                    <label>Login:</label>
+                    <input type="text" id="userlogin">
+                    <button onclick="login()">Login</button>
+                </fieldset>
+            </div>
         </div>
-
-        <div id="location-buttons">
-            <label>Is this the location you meant?</label>
-            <button class="btn fourth" onclick="getWeather()">Yes, check weather!</button><br>
-            <button id="try-again" class="btn first" onclick="promptUserForZipcode()">No, try again.</button>
+        <div id="signed-in" onload="onSignedIn()">
+            <h2>Congrats! You are signed with username: <span id="signed-in-name"></span>.</h2> 
+            <h3>Your Saved Locations</h3>
+            <div id="your-locations"></div>
         </div>
-    </div>   
-    <div id="login-container">
-        <div id="weather-display">
-            <h2>Your current forcast is:</h2>
-            <p><span id='weather-condition'></span>, with a temperature of <span id='weath-temp'></span>.</p>
-        </div>
-
-        <div id="signinlogin">
-            <p>Sign Up Below:</p>
-            <fieldset>
-                <label>Username:</label>
-                <input type="text" id="userinput">
-                <button onclick="saveUserName()">Save</button>
-                <p class="success" id="save-user-success">Congrats! You can sign in now!</p>
-                <p class="error" id="save-user-error">Error. You may already have an account. Try signing in.</p>
-            
-            </fieldset>
-            <fieldset>
-                <label>Login:</label>
-                <input type="text" id="userlogin">
-                <button onclick="login()">Login</button>
-            </fieldset>
-        </div>
-    </div>
-    <div id="signed-in" onload="onSignedIn()">
-        <h2>Congrats! You are signed with username: <span id="signed-in-name"></span>.</h2> 
-        <h3>Your Saved Locations</h3>
-        <div id="your-locations"></div>
-    </div>
-</body>
-<link rel="stylesheet" href="./styles.css"></link>
+    </body>
+    <link rel="stylesheet" href="./styles.css"></link>
 </html>
