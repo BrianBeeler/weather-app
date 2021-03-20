@@ -1,3 +1,4 @@
+const { sequelize } = require("../models");
 const db = require("../models");
 const Location = db.locations;
 const Op = db.Sequelize.Op;
@@ -42,10 +43,13 @@ exports.create = (req, res) => {
   
     console.log("Condition", condition);
 
-    Location.findAll(condition)
+    sequelize.query("SELECT distinct * FROM locations", 
+        { type: db.Sequelize.QueryTypes.SELECT }
+    )
       .then(data => {
         
-        console.log("data", data)
+        console.log("data length", data.length)
+        console.log("data", data);
 
         res.send(data);
       })
