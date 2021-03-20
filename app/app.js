@@ -55,8 +55,7 @@ function getWeather() {
                 document.querySelector('#weath-temp').innerHTML= soonestWeather.temperature;
             } else {
                 throw Error("No Weather Data");
-            }
-            
+            }            
         }
 
         function getWeatherFailure() {
@@ -68,19 +67,17 @@ function getWeather() {
 // Tied to save button
 function saveUserName() {
     username = document.querySelector("#userinput").value
-    console.log("Button clicked");
     saveUserNameToDB(username,zipcode, saveUserSuccess, saveUserFailure)
 
     // Append success message, remove error message
     function saveUserSuccess() {
-        console.log("Username save");
         document.querySelector("#save-user-success").style.display = "inline-block";
         document.querySelector("#save-user-error").style.display = "none";
     }
 
     // Append success error message, remove success message
     function saveUserFailure(error) {
-        console.log("Error", error);
+        console.error("Error", error);
         document.querySelector("#save-user-success").style.display = "none";
         document.querySelector("#save-user-error").style.display =  "inline-block";
     }
@@ -105,6 +102,7 @@ function login() {
             userId = data.id;
             username = data.username;
             document.querySelector("#signed-in").style.display = "inline"
+            document.querySelector("#signed-in-name").innerHTML = "";
             document.querySelector("#signed-in-name").append(`${username}`);
             const loginSuccess = new Event('loginSuccess');
             document.dispatchEvent(loginSuccess);
@@ -146,7 +144,6 @@ document.addEventListener('user-data-saved', async function(e) {
         });
 
         Promise.all(weatherPromises).then((weatherInfo) => {
-            console.log("Weather Info", weatherInfo);
             userWeather = weatherInfo;
             const WeatherInfoSaved = new Event('weather-info-saved');
             document.dispatchEvent(WeatherInfoSaved);
