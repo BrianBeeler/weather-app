@@ -1,3 +1,5 @@
+// Location model (schema)
+
 module.exports = (sequelize, Sequelize) => {
     const Location = sequelize.define("location", {
       userid: {

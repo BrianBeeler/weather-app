@@ -41,25 +41,24 @@ exports.create = async (req, res) => {
 
  };
 
- // Retrieve all Tutorials from the database.
+ // Retrieve all Locations for a given userid
 exports.findAll = (req, res) => {
-
     sequelize.query("SELECT distinct * FROM locations where userid="+req.params.userid, 
         { type: db.Sequelize.QueryTypes.SELECT }
     )
-      .then(data => {
-        
-        console.log("data length", data.length)
-        console.log("data", data);
+    .then(data => {
+    
+    console.log("data length", data.length)
+    console.log("data", data);
 
-        res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving locations for this user"
-        });
-      });
+    res.send(data);
+    })
+    .catch(err => {
+    res.status(500).send({
+        message:
+        err.message || "Some error occurred while retrieving locations for this user"
+    });
+    });
 };
 
 
