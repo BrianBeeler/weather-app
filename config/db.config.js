@@ -1,3 +1,6 @@
+// Database configuration
+// TODO: set up with hosted db?
+
 module.exports = {
     HOST: "localhost",
     USER: "root",
