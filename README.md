@@ -12,59 +12,53 @@ Commit the code to GitHub, BitBucket, or other hosted Git repository and share i
 
 
 
+#Planning, take 2, with estimates:
 
-#initial research, planning
-
-1. Build an interface that prompts a user’s location - 
-      TODO: Create a React app, use window.prompt to get a location
-2. User’s location and displays the current weather info about the location 
-      TODO: create a location api - node to google places api
-3. Displays the current weather info about the location. 
-      TODO: Integrate whichever weather source - weather.gov is accurate and has an api
-      TODO: Design and impliment UI for weather display
-4. The app should require a user to sign in (username onloy)
-      TODO: Create API to post a username to the database
-5. The user should be able to setup multiple locations to check weather
-      TODO: Create a locations table in database tied with key tied to users
-6. Please use whichever language you feel best showcases your skills: JavaScript, Node, mysql, maybe python
-7. Commit the code to GitHub: 10-4 
+1. Have a working get request from the client to the db (5 hours) - actual ~10 hours
+2. Build out other layers of the API (10 hours)                   - actual ~15 hours
+3. Complete UX (5 hours)                                          - actual ~5  hours
+4. Testing, refactoring and documentation (5 hours)               - actual ~5  hours
 
 
-TODO w. estimates:
-
-- Tutorials on LATEST react, node, mysql best practices (5 hours)
-- Spin up a react app with cli (30 mins)
-- Create a simple prompt to ask user for location (30 mins)
-- Spin up a node server (3 hours)
-- Create API 
-      - Get hello world (1 hour)
-      - Get locations (2 hours)
-      - Get weather (3 hours)
-      - Post user (2 hours)
-      - Post user location (2 hours)
-- Instantiate mongo db (2 hours)
-      - Create user table (1 hour)
-      - Create location table (1 hour)
-- Integration
-      - Create UI for sign in, and post to api (3 hours)
-      - Create UI for saving location, and post to api (3 hours)
-      - Create api - to db getters/setters (3 hours)
-- UI
-      - Styling (5 hours)
-- Code and documentation (3 hours)
-      - Make sure code runs on all machines and is easy to set up
-      - Refactor code, add comments where needed, update readme
-
-Total estimate: Total hours: 40
-
-
-Planning, take 2:
-
-1. Have a working get request from the client to the db (5 hours)
-2. Build out other layers of the API (10 hours)
-3. Complete UX (5 hours)
-4. Unit testing, and documentation (5 hours)
-
-
-src:
+The backend architecture was heavily influenced by the following src:
 https://bezkoder.com/react-node-express-mysql/
+
+# Stack
+
+Clientside 
+      -> vanilla js,css,html -> see app/*  
+      -> View/controller/model => app.js
+      -> Services that talk to api => services.js
+
+Express Server 
+      -> server.js
+
+Sequelize ORM 
+      -> models/*
+      -> config/*
+
+Routes and Logic
+      -> routes/*
+      -> controllers/*
+
+
+# Apis
+
+https://www.zipcodeapi.com/API#zipToLoc 
+      - Zipcode was used to get coordinate and city information
+        based on zipcodes. It is free and easy to user
+
+https://weather-gov.github.io/api/general-faqs
+      - Weather.gov is data rich, free, and easy to use. No api
+        key is needed, just a unique client tag
+      - Note: current conditions were not actually used, the data
+        received was the nearest forcast
+
+# Possible Improvements
+      - UX/UI design
+      - Authentication
+      - Refactor front-end into vue/react components
+      - Refacter services and api logic with async/await
+
+# Proudest moment
+      - In app.js Promise.All worked like expected on almost the first try
