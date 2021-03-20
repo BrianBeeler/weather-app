@@ -4,7 +4,7 @@ module.exports = app => {
   
     var router = require("express").Router();
   
-    // Create a new Tutorial
+    // All location api routes
     router.post("/", locations.create);
     router.get("/:userid", locations.findAll);
 
