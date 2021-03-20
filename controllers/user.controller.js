@@ -35,7 +35,6 @@ exports.create = (req, res) => {
 // Find a single User with a username (login)
 exports.login = (req, res) => {
     const username = req.params.username;
-    console.log("Logging in with username:"+username);
 
     User.findOne({
         where: {

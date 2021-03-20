@@ -47,9 +47,6 @@ exports.findAll = (req, res) => {
         { type: db.Sequelize.QueryTypes.SELECT }
     )
     .then(data => {
-    
-    console.log("data length", data.length)
-    console.log("data", data);
 
     res.send(data);
     })
