@@ -6,10 +6,6 @@ const cors = require("cors");
 
 const app = express();
 
-// var corsOptions = {
-//   origin: "http://localhost:8080/"
-// };
-
 app.use(cors());
 
 // parse requests of content-type - application/json
@@ -19,6 +15,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = require("./models");
+
+// Refreshes database each time the server runs (dev mode)
 db.sequelize.sync({ force: true }).then(() => {
   console.log("Drop and re-sync db.");
 });
