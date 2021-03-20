@@ -41,20 +41,24 @@
 
         <div id="signinlogin">
             <p>Sign Up Below:</p>
-            <label>Username:</label>
-            <input type="text" id="userinput">
-            <button onclick="saveUserName()">Save</button>
-            <p class="success" id="save-user-success">Congrats! You can sign in now!</p>
-            <p class="error" id="save-user-error">Error. You may already have an account. Try signing in.</p>
-            <br>
-            <label>Login:</label>
-            <input type="text" id="userlogin">
-            <button onclick="login()">Login</button>
+            <fieldset>
+                <label>Username:</label>
+                <input type="text" id="userinput">
+                <button onclick="saveUserName()">Save</button>
+                <p class="success" id="save-user-success">Congrats! You can sign in now!</p>
+                <p class="error" id="save-user-error">Error. You may already have an account. Try signing in.</p>
+            
+            </fieldset>
+            <fieldset>
+                <label>Login:</label>
+                <input type="text" id="userlogin">
+                <button onclick="login()">Login</button>
+            </fieldset>
         </div>
     </div>
     <div id="signed-in" onload="onSignedIn()">
         <h2>Congrats! You are signed with username: <span id="signed-in-name"></span>.</h2> 
-        <h2>Your Saved Locations</h2>
+        <h3>Your Saved Locations</h3>
         <div id="your-locations"></div>
     </div>
 </body>

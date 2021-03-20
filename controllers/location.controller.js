@@ -4,7 +4,7 @@ const Location = db.locations;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Tutorial
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
 
     console.log("Creating");
        // Validate request
@@ -23,24 +23,29 @@ exports.create = (req, res) => {
    
    let selector = {
        where: {
-        userid: req.body.userid,
-        zipcode: req.body.zipcode,
-        lat: req.body.lat,
-        lng: req.body.lng
+            userid: req.body.userid,
+            zipcode: req.body.zipcode,
        }
    }
-    // Save Tutorial in the database
-    Location.findOrCreate(selector)
 
-     .then(data => {
-       res.send(data);
-     })
-     .catch(err => {
-       res.status(500).send({
-         message:
-           err.message || "Some error occurred while creating the Location."
-       });
-     });
+   let found = await Location.findOne(selector);
+   if (!found) {
+        // Save Tutorial in the database
+        Location.create(location)
+
+        .then(data => {
+          res.send(data);
+        })
+        .catch(err => {
+          res.status(500).send({
+            message:
+              err.message || "Some error occurred while creating the Location."
+          });
+        });
+   } else {
+       res.send(found);
+   }
+
  };
 
  // Retrieve all Tutorials from the database.
