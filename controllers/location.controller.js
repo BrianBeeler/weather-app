@@ -50,15 +50,8 @@ exports.create = async (req, res) => {
 
  // Retrieve all Tutorials from the database.
     exports.findAll = (req, res) => {
-        var condition = {
-            where: {
-                userid : req.params.userid
-            }
-        }
-  
-    console.log("Condition", condition);
 
-    sequelize.query("SELECT distinct * FROM locations", 
+    sequelize.query("SELECT distinct * FROM locations where userid="+req.params.userid, 
         { type: db.Sequelize.QueryTypes.SELECT }
     )
       .then(data => {
