@@ -44,6 +44,9 @@ exports.create = (req, res) => {
 
     Location.findAll(condition)
       .then(data => {
+        
+        console.log("data", data)
+
         res.send(data);
       })
       .catch(err => {
@@ -53,4 +56,48 @@ exports.create = (req, res) => {
         });
       });
   
-};
+    };
+
+
+    exports.findAllWithWeather = (req, res) => {
+        var condition = {
+            where: {
+                userid : req.params.userid
+            }
+        }
+  
+    console.log("Condition", condition);
+
+    Location.findAll(condition)
+      .then(data => {
+        let asynfunctions = []
+        for (i=0;i<data.length;i++) {
+            asyncfunctions.push(()=> 
+            {
+                console.log("function did run");
+                lat=data[i].lat;
+                lng=data[i].lng
+                let url = "https://api.weather.gov/points/"+lat+","+lng;
+                goGetWeatherData(url);
+            })()
+        }
+
+        Promise.all(asynfunctions).then((results) =>{
+            console.log("Results", results);
+            res.send(results)
+        })
+        // for all locations, get whether, return payload
+        
+
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving locations for this user"
+        });
+      });
+  
+    };
+
+
+  

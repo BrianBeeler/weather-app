@@ -5,6 +5,7 @@
 //     let lat = null;
 //     let lng = null;
 
+
 // const { getLocationByZip } = require("../controllers/external.controller");
 
 
@@ -62,6 +63,8 @@ lat = null;
 lon = null;
 userId = null;
 username = null;
+userLocations = null;
+userWeather = [];
 promptUserForZipcode();
 
 function promptUserForZipcode () {
@@ -152,6 +155,9 @@ function login() {
 
         function successLocSave(data) {
             console.log("Location saved too", data)
+            userLocations = data;
+            const UserDataSaved = new Event('user-data-saved');
+            document.dispatchEvent(UserDataSaved);
         }
 
         function failureLocSave() {
@@ -178,4 +184,25 @@ function onSignedIn() {
 
 document.addEventListener('loginSuccess', function(e) {
     console.log("DID LOGIN!!!!");
+});
+
+document.addEventListener('user-data-saved', function(e) {
+    getUserLocationsById(userId, (data)=> {
+        
+        
+        for (i=0; i < data.length; i++) {
+            getWeatherMetaData(data[i].lat, data[i].lng, (data2) => {
+                userWeather.push({
+                    zipcode: data.zipcode,
+                    condition: data2[0].shortForecast,
+                    temperature: data2[0].temperature
+                })
+            }) 
+        }
+
+        console.log(userWeather);
+
+    }, () => {
+        console.log("Unable to get locations for this user.")
+    })
 });

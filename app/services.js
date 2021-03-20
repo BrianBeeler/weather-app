@@ -71,6 +71,16 @@ function getUserLocationsById(userid, success, failure) {
     $.ajax(reqOptions).done(success).fail(failure);
 }
 
+function getAllWeatherForUser(userid, success, failure) {
+    const reqOptions = {
+        "url": "http://localhost:8080/api/locations/weather/"+userid,
+        "dataType": "json",
+        "type": "GET",
+    }
+    $.ajax(reqOptions).done(success).fail(failure);
+}
+
+
 
 // function getWeatherData(url, success, failure) {
 //     const requestOptions = {
