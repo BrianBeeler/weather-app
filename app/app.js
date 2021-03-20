@@ -92,6 +92,8 @@ function login() {
     loginWithUserName(username, success, failure);
     let timeout = true;
 
+    // Bug: login api doesn't return an error for no user
+    // should be fixed on api. this is a quick fix.
     setTimeout(()=> {
         if (timeout) {
             alert("Request timed out. Do you have an account?");
@@ -126,29 +128,11 @@ function login() {
     }
 }
 
-function getUserLocations() {
-    getUserLocationsById(userId, (data)=> {
-        console.log("the location for this user are: ", data )
-    }, () => {
-        console.log("Unable to get locations for this user.")
-    })
-}
-
-function onSignedIn() {
-    console.log("On Signed In Called.");
-}
-
-
-document.addEventListener('loginSuccess', function(e) {
-    console.log("DID LOGIN!!!!");
-});
-
+// When user location data is saved, get weather data for each
+// location
 document.addEventListener('user-data-saved', async function(e) {
     
         let locations = await getUserLocationsById(userId)
- 
-        console.log("locations", locations);
-
         let weatherPromises = await locations.map(async (location) => {
         let weatherData = await getWeatherMetaData(location.lat, location.lng)
 
@@ -170,6 +154,8 @@ document.addEventListener('user-data-saved', async function(e) {
 
 });
 
+
+// When whether info is saved, update the dom appropriately
 document.addEventListener('weather-info-saved', () => {
     document.querySelector('#login-container').style.display = 'none';
     let yourLoc = document.querySelector("#your-locations");
