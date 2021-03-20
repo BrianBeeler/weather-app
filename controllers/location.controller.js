@@ -20,8 +20,18 @@ exports.create = (req, res) => {
 
    console.log("Creating Location: ", location);
  
-   // Save Tutorial in the database
-   Location.create(location)
+   
+   let selector = {
+       where: {
+        userid: req.body.userid,
+        zipcode: req.body.zipcode,
+        lat: req.body.lat,
+        lng: req.body.lng
+       }
+   }
+    // Save Tutorial in the database
+    Location.findOrCreate(selector)
+
      .then(data => {
        res.send(data);
      })

@@ -220,7 +220,7 @@ document.addEventListener('weather-info-saved', () => {
     yourLoc.style.display = 'flex';
     yourLoc.innerHTML = '';
     for (i = 0; i < userWeather.length; i++) {
-        yourLoc.innerHTML +=( (`<p>The current weather in zip ${userWeather[i].zipcode} 
+        yourLoc.innerHTML +=( (`<p>The current weather in ${userWeather[i].zipcode} 
             is: ${userWeather[i].current}, with a temperature of ${userWeather[i].temperature}.`));
     } 
 });
