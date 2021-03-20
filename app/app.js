@@ -190,7 +190,9 @@ document.addEventListener('loginSuccess', function(e) {
 document.addEventListener('user-data-saved', async function(e) {
     
         let locations = await getUserLocationsById(userId)
-        
+ 
+        console.log("locations", locations);
+
         let weatherPromises = await locations.map(async (location) => {
         let weatherData = await getWeatherMetaData(location.lat, location.lng)
 
@@ -204,9 +206,21 @@ document.addEventListener('user-data-saved', async function(e) {
         });
 
         Promise.all(weatherPromises).then((weatherInfo) => {
-            console.log("Weather Info: ", weatherInfo);
+            console.log("Weather Info", weatherInfo);
+            userWeather = weatherInfo;
+            const WeatherInfoSaved = new Event('weather-info-saved');
+            document.dispatchEvent(WeatherInfoSaved);
         })
 
-        
+});
 
+document.addEventListener('weather-info-saved', () => {
+    document.querySelector('#signinlogin').style.display = 'none';
+    let yourLoc = document.querySelector("#your-locations");
+    yourLoc.style.display = 'flex';
+    yourLoc.innerHTML = '';
+    for (i = 0; i < userWeather.length; i++) {
+        yourLoc.innerHTML +=( (`<p>The current weather in zip ${userWeather[i].zipcode} 
+            is: ${userWeather[i].current}, with a temperature of ${userWeather[i].temperature}.`));
+    } 
 });
