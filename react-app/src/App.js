@@ -1,5 +1,6 @@
 
 import './App.css';
+
 import GetWeather from './components/GetWeather.js'
 import MyLocation from './components/MyLocations.js'
 import Signup from './components/Signup.js'
