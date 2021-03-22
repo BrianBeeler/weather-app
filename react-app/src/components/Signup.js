@@ -3,7 +3,7 @@ import Services from "../services.js";
 
 function saveUserName() {
     let username = document.querySelector("#userinput").value
-    Services.saveUserNameToDB(username, saveUserSuccess, saveUserFailure)
+    Services.saveUserNameToDB(username,  saveUserFailure, saveUserSuccess,)
 
     // Append success message, remove error message
     function saveUserSuccess() {
@@ -23,7 +23,7 @@ let username,timeout, userLocations, zipcode, lat, lng, userId;
 
 function login() {
     let username = document.querySelector("#userlogin").value
-    Services.loginWithUserName(username, success, failure);
+    Services.loginWithUserName(username,  success, failure);
 
     function success(data) {
         if (data.id) {
@@ -43,10 +43,25 @@ function login() {
 
 function Signup(props){
 
-    function login() {
-        // Do stuff
-        props.handler('locations');
+    async function login() {
+        let data, username
+        username = document.querySelector('#userlogin').value;
+
+        try {
+            data = await Services.loginWithUserName(username);
+        } catch(e) {
+           // Doesn't work, for some reason 
+        }
+        
+        if (data) {
+            props.onLogin(data);
+        } else {
+            console.error("An error occured!");
+        }
+        
+      
     }
+
 
 
     return (    
@@ -57,7 +72,7 @@ function Signup(props){
                 <fieldset>
                     <label>Username:</label>
                     <input type="text" id="userinput"></input>
-                    <button onClick={saveUserName}>Save</button>
+                    <button onClick={saveUserName}>Save</button><br/>
                     <p className="success" id="save-user-success">Congrats! You can sign in now!</p>
                     <p className="error" id="save-user-error">Error. You may already have an account. Try signing in.</p>
                 </fieldset>

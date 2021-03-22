@@ -50,7 +50,7 @@ function saveUserNameToDB(username, location, success, failure) {
 }
 
 // Gets userid for unique username as login token
-async function loginWithUserName(username, success, failure) {
+function loginWithUserName(username, success, failure) {
     const requestOptions = {
         "url": "http://localhost:8080/api/user/login/"+username,
         "dataType": "json",
@@ -60,7 +60,7 @@ async function loginWithUserName(username, success, failure) {
         }
     }
 
-    $.ajax(requestOptions).done(success).fail(failure);
+    return $.ajax(requestOptions);
 }
 
 // saves a location and the userid that signed in with that location

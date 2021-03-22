@@ -12,7 +12,9 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      showPage: "splash"
+      showPage: "splash",
+      loggedIn: false,
+      userInfo: null
     };
     
     this.pageChangeHandler = (name) => {
@@ -20,6 +22,17 @@ class App extends React.Component {
           showPage: name
         })
       }
+    this.login = (userInfo) => {
+
+      console.log("userInfo", userInfo);
+
+      this.setState({
+        loggedIn: true,
+        userInfo: userInfo
+      })
+      this.pageChangeHandler('locations')
+    }
+      
   }
 
 
@@ -31,13 +44,19 @@ class App extends React.Component {
       page = <GetWeather handler={this.pageChangeHandler}></GetWeather>
     }
     if (this.state.showPage === "locations") {
-      page = <MyLocation handler={this.pageChangeHandler}></MyLocation>
+      page = <MyLocation 
+        handler={this.pageChangeHandler}
+        userInfo={this.state.userInfo}
+        ></MyLocation>
     }
     if (this.state.showPage === "splash") {
       page = <Splash handler={this.pageChangeHandler}></Splash>
     } 
     if (this.state.showPage === "signup") {
-      page = <Signup handler={this.pageChangeHandler}></Signup>
+      page = <Signup 
+        handler={this.pageChangeHandler}
+        onLogin={this.login}
+        ></Signup>
     } 
 
     return page;
