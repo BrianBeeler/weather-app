@@ -1,4 +1,5 @@
 import "../styles.css";
+import Services from "../services.js"
 
 function saveUserName() {
 
@@ -21,13 +22,39 @@ function Signup(props){
 
     }
 
+    let debounceOut= false
+    let zipTimeout = null
+
+    function zipChange() {
+        if (zipTimeout) {
+            clearTimeout(zipTimeout);
+        }
+        zipTimeout = setTimeout(()=> {
+            let zip = document.querySelector("input[name='zipcode']").value;
+            getLocationInfo(zip);
+        },2000)
+    }
+
+    function getLocationInfo(zipcode) {
+        console.log(zipcode);
+        let zipPattern = new  RegExp('^[0-9]{5}$');
+        let validZip = zipPattern.test(zipcode);
+        if (!validZip) {
+            alert("Please enter a valid zipcode")
+        } else {
+            Services.getLocationByZip(zipcode);
+        }
+    }
+
+   
+
     console.log(props);
 
     return (    
         <div id="signed-in">
             <h2>Congrats! You are signed with username: <span id="signed-in-name">{props.userInfo.username}</span>.</h2> 
             <div id="location-info">
-                Zip: <input type="text" name="zipcode" readOnly /><br />
+                Zip: <input type="text" name="zipcode" onChange={zipChange} /><br />
                 City: <input type="text" name="city" readOnly /><br />
                 State: <input type="text" name="state" readOnly /><br />
                 <br/>      

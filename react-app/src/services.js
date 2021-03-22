@@ -15,7 +15,7 @@ if (window.document.url === "brainsweatherapp.com") {
 function getLocationByZip(zipcode, success, failure) {
     
     const reqOptions = {
-        "url": "/api/external/location/"+zipcode,
+        "url": "http://localhost:8080/api/external/location/"+zipcode,
         "dataType": "json",
         "type": "GET"
     }
