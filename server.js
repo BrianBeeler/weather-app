@@ -3,8 +3,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const path = require("path");
+
+// TODO: Refactor in import blank from "blank" syntax
 
 const app = express();
+
+// Needed for serving files in app.js
+app.use(express.static('app'));
 
 app.use(cors());
 
@@ -23,7 +29,7 @@ db.sequelize.sync({ force: true }).then(() => {
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to Brian's application" });
+  res.sendFile(path.join(__dirname + '/app/index.html'))
 });
 
 
@@ -34,6 +40,9 @@ require("./routes/location.routes")(app);
 app.get('*', function(req, res){
   res.status(404).send();
 });
+
+
+// TODO: Set up static 
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
