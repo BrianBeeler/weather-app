@@ -43,7 +43,6 @@ function saveUserNameToDB(username, location, success, failure) {
         "type": "POST",
         "data": {
             username: username,
-            location: location
         }
     }
 

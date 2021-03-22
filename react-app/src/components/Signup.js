@@ -3,8 +3,7 @@ import Services from "../services.js";
 
 function saveUserName() {
     let username = document.querySelector("#userinput").value
-    let zipcode;
-    Services.saveUserNameToDB(username, zipcode, saveUserSuccess, saveUserFailure)
+    Services.saveUserNameToDB(username, saveUserSuccess, saveUserFailure)
 
     // Append success message, remove error message
     function saveUserSuccess() {
