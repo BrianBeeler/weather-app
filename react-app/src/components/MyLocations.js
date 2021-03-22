@@ -35,14 +35,17 @@ function Signup(props){
         },2000)
     }
 
-    function getLocationInfo(zipcode) {
+    async function getLocationInfo(zipcode) {
         console.log(zipcode);
         let zipPattern = new  RegExp('^[0-9]{5}$');
         let validZip = zipPattern.test(zipcode);
         if (!validZip) {
             alert("Please enter a valid zipcode")
         } else {
-            Services.getLocationByZip(zipcode);
+            let locationInfo = await Services.getLocationByZip(zipcode);
+            console.log(locationInfo);
+            document.querySelector("input[name='city']").value = locationInfo.city;
+            document.querySelector("input[name='state']").value = locationInfo.state;
         }
     }
 

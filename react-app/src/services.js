@@ -20,7 +20,7 @@ function getLocationByZip(zipcode, success, failure) {
         "type": "GET"
     }
     
-    $.ajax(reqOptions).done(success).fail(failure);
+    return $.ajax(reqOptions)
 }
 
 // Poorly named, gets whether info, not metadata
