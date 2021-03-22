@@ -19,8 +19,26 @@ function saveUserName() {
     }
 }
 
-function login() {
+let username,timeout, userLocations, zipcode, lat, lng, userId;
 
+function login() {
+    let username = document.querySelector("#userlogin").value
+    Services.loginWithUserName(username, success, failure);
+
+    function success(data) {
+        if (data.id) {
+            userId = data.id;
+            username = data.username;
+            document.querySelector("#signed-in").style.display = "inline"
+            document.querySelector("#signed-in-name").innerHTML = "";
+            document.querySelector("#signed-in-name").append(`${username}`);
+            const loginSuccess = new Event('loginSuccess');
+            document.dispatchEvent(loginSuccess);
+        }
+    }
+    function failure(data) {
+        alert("Login failed, do you have an account?")
+    }
 }
 
 function Signup(props){
