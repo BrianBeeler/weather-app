@@ -1,7 +1,23 @@
 import "../styles.css";
+import Services from "../services.js";
 
 function saveUserName() {
+    let username = document.querySelector("#userinput").value
+    let zipcode;
+    Services.saveUserNameToDB(username, zipcode, saveUserSuccess, saveUserFailure)
 
+    // Append success message, remove error message
+    function saveUserSuccess() {
+        document.querySelector("#save-user-success").style.display = "inline-block";
+        document.querySelector("#save-user-error").style.display = "none";
+    }
+
+    // Append success error message, remove success message
+    function saveUserFailure(error) {
+        console.error("Error", error);
+        document.querySelector("#save-user-success").style.display = "none";
+        document.querySelector("#save-user-error").style.display =  "inline-block";
+    }
 }
 
 function login() {
