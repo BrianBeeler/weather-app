@@ -9,6 +9,13 @@ function login() {
 }
 
 function Signup(props){
+
+    function login() {
+        // Do stuff
+        props.handler('locations');
+    }
+
+
     return (    
         <div id="login-container">
             <h1>Brian's Weather App</h1>
