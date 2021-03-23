@@ -15,7 +15,7 @@ module.exports = (sequelize, Sequelize) => {
           allowNull: false
       },
       lat: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.FLOAT,
           allowNull: false
       }
     })

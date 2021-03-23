@@ -44,7 +44,7 @@ class Locations extends React.Component {
             }
         }
         this.getWeatherForAllLocations =   async function getWeatherForAllLocations() {
-            console.log("props", props);
+
             let locations = await Services.getUserLocationsById(props.userInfo.id)
             let weatherPromises = await locations.map(async (location) => {
             let weatherData = await Services.getWeatherMetaData(location.lat, location.lng)
@@ -68,12 +68,25 @@ class Locations extends React.Component {
             })
         }
         this.saveLocation = async ()=> {
-            let savedLocation = await Services.saveUserLocation(this.props.userInfo.id, this.locationInfo.zipcode, this.locationInfo.lat, this.locationInfo.lng);
-            this.getWeatherForAllLocations();
+            if (this.props.userInfo) {
+                let savedLocation = await Services.saveUserLocation(this.props.userInfo.id, this.locationInfo.zipcode, this.locationInfo.lat, this.locationInfo.lng);
+                this.getWeatherForAllLocations();
+            } else {
+                prompt("Please try that again.")
+            }
+ 
         }
     }
 
+
+    componentDidMount() {
+        this.getWeatherForAllLocations();
+    }
+
     render() {
+ 
+        
+
         return (
         <div id="signed-in">
             <h2>Congrats! You are signed with username: <span id="signed-in-name">{this.props.userInfo.username}</span>.</h2> 

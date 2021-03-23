@@ -37,8 +37,10 @@ exports.getWeatherMetaData = (req, res) => {
         if (!error && response.statusCode == 200) {
             parsedBody = JSON.parse(body);
             let nextUrl = parsedBody.properties.forecast;
+            console.log("nextUrl", nextUrl);
             request(nextUrl, (error, response, body) => {
                 if (error || response.statusCode !== 200) {
+                    console.log("error",error)
                     res.status(response.statusCode).json(error);
                 } else {
                     let pbody = JSON.parse(body);    
