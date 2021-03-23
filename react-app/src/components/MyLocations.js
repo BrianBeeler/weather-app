@@ -17,6 +17,7 @@ class Locations extends React.Component {
         this.state = {
             userWeather: []
         }
+        this.locationInfo = null;
         this.debounceOut = false;
         this.zipTimeout = null;
         this.zipChange = () => {
@@ -35,10 +36,11 @@ class Locations extends React.Component {
             if (!validZip) {
                 alert("Please enter a valid zipcode")
             } else {
-                let locationInfo = await Services.getLocationByZip(zipcode);
-                console.log(locationInfo);
-                document.querySelector("input[name='city']").value = locationInfo.city;
-                document.querySelector("input[name='state']").value = locationInfo.state;
+                this.locationInfo = await Services.getLocationByZip(zipcode);
+                this.locationInfo.zipcode = zipcode;
+                console.log(this.locationInfo);
+                document.querySelector("input[name='city']").value = this.locationInfo.city;
+                document.querySelector("input[name='state']").value = this.locationInfo.state;
             }
         }
         this.getWeatherForAllLocations =   async function getWeatherForAllLocations() {
@@ -47,7 +49,10 @@ class Locations extends React.Component {
             let weatherPromises = await locations.map(async (location) => {
             let weatherData = await Services.getWeatherMetaData(location.lat, location.lng)
         
+            console.log("locations", locations);
+
                 return { 
+                    city: location.city,
                     zipcode: location.zipcode,
                     lat: location.lat,
                     lng:location.lng,
@@ -56,12 +61,15 @@ class Locations extends React.Component {
                 }
             });
         
-            Promise.all(weatherPromises).then((weatherInfo) => {
-                console.log("Weather Info", weatherInfo);
-                this.setState({
-                    userWeather : [1,2,3,4,5,6,7,8,9,10]
-                });
+            let res = await Promise.all(weatherPromises);
+            console.log("res", res);
+            this.setState({
+                userWeather: res
             })
+        }
+        this.saveLocation = async ()=> {
+            let savedLocation = await Services.saveUserLocation(this.props.userInfo.id, this.locationInfo.zipcode, this.locationInfo.lat, this.locationInfo.lng);
+            this.getWeatherForAllLocations();
         }
     }
 
@@ -77,14 +85,14 @@ class Locations extends React.Component {
             </div>
             <div id="location-buttons">
                 <label>Is this the location you meant?</label>
-                <button className="btn fourth" onClick={() => {
-                    this.getWeatherForAllLocations() 
+                <button className="btn fourth" onClick={ () => {
+                    this.saveLocation()
                 }}>Yes, check weather!</button><br/>
             </div>
             <div>
                 <h3>Your Saved Locations</h3>
                 {this.state.userWeather.map((value, index) => {
-                    return <p key={index}>{value}</p>
+                    return <p key={index}>The weather in zipcode: {value.zipcode} is {value.current} with a temperature of {value.temperature}</p>
                 })}
                 <p> - You currently have no saved locations.</p>
 

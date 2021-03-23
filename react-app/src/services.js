@@ -77,7 +77,7 @@ function saveUserLocation(userid, zipcode, lat, lng, success, failure) {
         }
     }
 
-    $.ajax(requestOptions).done(success).fail(failure);
+    return $.ajax(requestOptions).done(success).fail(failure);
 }
 
 // gets all locations for a given user, based on userid
