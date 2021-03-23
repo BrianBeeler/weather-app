@@ -2,29 +2,6 @@ import "../styles.css";
 import Services from "../services.js";
 import React from "react";
 
-async function login() {
-    let data, username
-    username = document.querySelector('#userlogin').value;
-
-    try {
-        data = await Services.loginWithUserName(username);
-    } catch(e) {
-       // Doesn't work, for some reason 
-    }
-    
-    if (data) {
-        this.setState({
-            loginSuccess: true,
-            loginFailure: false
-        })
-    } else {
-        this.setState({
-            loginSuccess: false,
-            loginFailure: true
-        })
-    }
-}
-
 async function saveUserName() {
     let username = document.querySelector("#userinput").value;
     let data;
@@ -49,6 +26,33 @@ async function saveUserName() {
  
     }
 }
+
+async function login() {
+    let data, username
+    username = document.querySelector('#userlogin').value;
+
+    try {
+        data = await Services.loginWithUserName(username);
+    } catch(e) {
+       // Doesn't work, for some reason 
+    }
+    
+    if (data) {
+        this.setState({
+            loginSuccess: true,
+            loginFailure: false
+        })
+        this.props.onLogin(data);
+    } else {
+        this.setState({
+            loginSuccess: false,
+            loginFailure: true
+        })
+        
+    }
+}
+
+
 
 
 
@@ -84,6 +88,7 @@ class Signup extends React.Component {
                         <label>Login:</label>
                         <input type="text" id="userlogin"></input>
                         <button onClick={this.methods.login}>Login</button>
+                        {(this.state.loginFailure) ?  <p className="error" id="save-user-error">Error. Have you signed up?</p> : '' }  
                     </fieldset>
                 </div>
         </div>

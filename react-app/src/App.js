@@ -38,28 +38,28 @@ class App extends React.Component {
 
   render( ) {
 
-    let page;
+  let page;
 
     if (this.state.showPage === "weather") {
-      page = <GetWeather handler={this.pageChangeHandler}></GetWeather>
+        page = <GetWeather handler={this.pageChangeHandler}></GetWeather>
     }
     if (this.state.showPage === "locations") {
       page = <MyLocation 
-        handler={this.pageChangeHandler}
-        userInfo={this.state.userInfo}
-        ></MyLocation>
+              handler={this.pageChangeHandler}
+              userInfo={this.state.userInfo}
+            ></MyLocation>
     }
     if (this.state.showPage === "splash") {
       page = <Splash handler={this.pageChangeHandler}></Splash>
     } 
     if (this.state.showPage === "signup") {
       page = <Signup 
-        handler={this.pageChangeHandler}
-        onLogin={this.login}
-        ></Signup>
+              handler={this.pageChangeHandler}
+              onLogin={this.login}
+            ></Signup>
     } 
 
-    return page;
+      return page;
   }
 }
 
