@@ -36,7 +36,7 @@ function getWeatherMetaData(lat, lng, success, failure) {
 
 // Saves a new user to the database
 // TODO: remove "location"
-function saveUserNameToDB(username, location, success, failure) {
+function saveUserNameToDB(username) {
     const requestOptions = {
         "url": "http://localhost:8080/api/user/",
         "dataType": "json",
@@ -46,7 +46,7 @@ function saveUserNameToDB(username, location, success, failure) {
         }
     }
 
-    $.ajax(requestOptions).done(success).fail(failure);
+    return $.ajax(requestOptions)
 }
 
 // Gets userid for unique username as login token
