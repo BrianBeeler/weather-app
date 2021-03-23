@@ -32,6 +32,12 @@ class App extends React.Component {
       })
       this.pageChangeHandler('locations')
     }
+    this.logout = () => {
+      this.setState({
+        userInfo: null
+      })
+      this.pageChangeHandler('splash')
+    }
       
   }
 
@@ -39,25 +45,27 @@ class App extends React.Component {
   render( ) {
 
   let page;
+    
+  if (this.state.showPage === "splash") {
+    page = <Splash handler={this.pageChangeHandler}></Splash>
+  } 
 
-    if (this.state.showPage === "weather") {
-        page = <GetWeather handler={this.pageChangeHandler}></GetWeather>
-    }
-    if (this.state.showPage === "locations") {
-      page = <MyLocation 
-              handler={this.pageChangeHandler}
-              userInfo={this.state.userInfo}
-            ></MyLocation>
-    }
-    if (this.state.showPage === "splash") {
-      page = <Splash handler={this.pageChangeHandler}></Splash>
-    } 
-    if (this.state.showPage === "signup") {
-      page = <Signup 
-              handler={this.pageChangeHandler}
-              onLogin={this.login}
-            ></Signup>
-    } 
+  if (this.state.showPage === "signup") {
+    page = <Signup 
+            handler={this.pageChangeHandler}
+            onLogin={this.login}
+          ></Signup>
+  } 
+
+  if (this.state.showPage === "locations") {
+    page = <MyLocation 
+            handler={this.pageChangeHandler}
+            userInfo={this.state.userInfo}
+            onLogout={this.logout}
+          ></MyLocation>
+  }
+
+
 
       return page;
   }

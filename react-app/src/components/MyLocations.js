@@ -38,6 +38,9 @@ class Locations extends React.Component {
             } else {
                 this.locationInfo = await Services.getLocationByZip(zipcode);
                 this.locationInfo.zipcode = zipcode;
+                this.setState({
+                    locationData: this.locationInfo
+                })
                 console.log(this.locationInfo);
                 document.querySelector("input[name='city']").value = this.locationInfo.city;
                 document.querySelector("input[name='state']").value = this.locationInfo.state;
@@ -49,14 +52,15 @@ class Locations extends React.Component {
             let weatherPromises = await locations.map(async (location) => {
             let weatherData = await Services.getWeatherMetaData(location.lat, location.lng)
         
-            console.log("locations", locations);
+            let forcast = weatherData[0].shortForecast
+            forcast = forcast.charAt(0) + forcast.substring(1).toLowerCase();
 
                 return { 
                     city: location.city,
                     zipcode: location.zipcode,
                     lat: location.lat,
                     lng:location.lng,
-                    current:weatherData[0].shortForecast,
+                    current:forcast,
                     temperature: weatherData[0].temperature
                 }
             });
@@ -98,17 +102,23 @@ class Locations extends React.Component {
             </div>
             <div id="location-buttons">
                 <label>Is this the location you meant?</label>
-                <button className="btn fourth" onClick={ () => {
-                    this.saveLocation()
-                }}>Yes, check weather!</button><br/>
+                <button className="btn fourth" 
+                        onClick={ () => {
+                            this.saveLocation()
+                        } }
+                        disabled={ (this.state.locationData && this.state.locationData.zipcode) ? false: true}
+                >Yes, check weather!</button><br/>
             </div>
             <div>
                 <h3>Your Saved Locations</h3>
                 {this.state.userWeather.map((value, index) => {
-                    return <p key={index}>The weather in zipcode: {value.zipcode} is {value.current} with a temperature of {value.temperature}</p>
+                    return <p key={index}>{value.zipcode}: {value.current}, with a temperature of {value.temperature}.</p>
                 })}
-                <p> - You currently have no saved locations.</p>
+                {(!this.state.userWeather || this.state.userWeather.length === 0) ? <p> - You currently have no saved locations.</p> : ''}
 
+            </div>
+            <div>
+                <button onClick={this.props.onLogout}>Logout</button>
             </div>
         </div>)
     }
