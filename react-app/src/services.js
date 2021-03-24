@@ -38,7 +38,7 @@ function getWeatherMetaData(lat, lng, success, failure) {
 // TODO: remove "location"
 function saveUserNameToDB(username) {
     const requestOptions = {
-        "url": "https://brians-weather-app.herokuapp.com/api/user/",
+        "url": "/api/user/",
         "dataType": "json",
         "type": "POST",
         "data": {
