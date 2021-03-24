@@ -18,7 +18,7 @@ Commit the code to GitHub, BitBucket, or other hosted Git repository and share i
 2. Build out other layers of the API (10 hours)                   - actual ~15 hours
 3. Complete UX (5 hours)                                          - actual ~5  hours
 4. Testing, refactoring and documentation (5 hours)               - actual ~5  hours
-
+5. Refactoring into React App (10 hours)                          - actial ~10 hours
 
 The backend architecture was heavily influenced by the following src:
 https://bezkoder.com/react-node-express-mysql/
@@ -26,9 +26,14 @@ https://bezkoder.com/react-node-express-mysql/
 # Stack
 
 Clientside 
-      -> vanilla js,css,html -> see app/*  
-      -> View/controller/model => app.js
-      -> Services that talk to api => services.js
+      V1 - Now removed
+            -> vanilla js,css,html -> see app/*  
+            -> View/controller/model => app.js
+            -> Services that talk to api => services.js
+      V2 - React
+            -> React components in react-app/src/components/*
+            -> API services in react/app/src/services.js
+            -> /react-app/index renders react-app/App.js renders components
 
 Express Server 
       -> server.js
@@ -62,3 +67,4 @@ https://weather-gov.github.io/api/general-faqs
 
 # Proudest moment
       - In app.js Promise.All worked like expected on almost the first try
+      
