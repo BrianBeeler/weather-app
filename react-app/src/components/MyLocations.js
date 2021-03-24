@@ -36,14 +36,24 @@ class Locations extends React.Component {
             if (!validZip) {
                 alert("Please enter a valid zipcode")
             } else {
-                this.locationInfo = await Services.getLocationByZip(zipcode);
-                this.locationInfo.zipcode = zipcode;
-                this.setState({
-                    locationData: this.locationInfo
-                })
-                console.log(this.locationInfo);
-                document.querySelector("input[name='city']").value = this.locationInfo.city;
-                document.querySelector("input[name='state']").value = this.locationInfo.state;
+                try {
+                    this.locationInfo = await Services.getLocationByZip(zipcode);
+                } catch {
+                    console.error("No location returned for zipcode.")
+                } 
+                
+                if (this.locationInfo) {
+                    this.locationInfo.zipcode = zipcode;
+                    this.setState({
+                        locationData: this.locationInfo
+                    })
+                    console.log(this.locationInfo);
+                    document.querySelector("input[name='city']").value = this.locationInfo.city;
+                    document.querySelector("input[name='state']").value = this.locationInfo.state;
+                } else {
+                    alert("This zip did not return a location.")
+                }
+
             }
         }
         this.getWeatherForAllLocations =   async function getWeatherForAllLocations() {
@@ -93,7 +103,8 @@ class Locations extends React.Component {
 
         return (
         <div id="signed-in">
-            <h2>Congrats! You are signed with username: <span id="signed-in-name">{this.props.userInfo.username}</span>.</h2> 
+            <h2>Congrats!</h2> 
+            <h3>You are signed with username: <span id="signed-in-name">{this.props.userInfo.username}</span>.</h3> 
             <div id="location-info">
                 Zip: <input type="text" name="zipcode" onChange={this.zipChange} /><br />
                 City: <input type="text" name="city" readOnly /><br />
@@ -117,8 +128,8 @@ class Locations extends React.Component {
                 {(!this.state.userWeather || this.state.userWeather.length === 0) ? <p> - You currently have no saved locations.</p> : ''}
 
             </div>
-            <div>
-                <button onClick={this.props.onLogout}>Logout</button>
+            <div id="logout-container">
+                <button className="btn fourth" onClick={this.props.onLogout}>Logout</button>
             </div>
         </div>)
     }

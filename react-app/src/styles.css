@@ -34,8 +34,22 @@ h1 {
 }
 
 body {
-    background-color: #79b0d4;
-    color: #104070;
+    background-color: #282c34;;
+    color: white;
+}
+
+#style-fields {
+  text-align: right;
+}
+
+#style-fields label {
+  margin-right: 25px;
+}
+
+#logout-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #weather-display {
@@ -49,6 +63,11 @@ body {
     text-align: center;
 }
 
+
+#root {
+  max-width: 450px;
+  margin: auto;
+}
 
 #signed-in {
     text-align: center;
