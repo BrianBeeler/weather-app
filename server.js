@@ -20,6 +20,8 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(express.static(path.join(__dirname, 'react-app/build')));
+
 const db = require("./models");
 
 // Refreshes database each time the server runs (dev mode)
@@ -28,8 +30,8 @@ db.sequelize.sync({ force: true }).then(() => {
 });
 
 // simple route
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + '/app/index.html'))
+app.get('/', (req,res) => {
+  res.sendFile(path.join(__dirname, 'react-app/build/index.html'));
 });
 
 
