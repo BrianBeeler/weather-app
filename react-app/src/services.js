@@ -15,7 +15,7 @@ if (window.document.url === "brainsweatherapp.com") {
 function getLocationByZip(zipcode, success, failure) {
     
     const reqOptions = {
-        "url": "http://localhost:8080/api/external/location/"+zipcode,
+        "url": "/api/external/location/"+zipcode,
         "dataType": "json",
         "type": "GET"
     }
@@ -27,7 +27,7 @@ function getLocationByZip(zipcode, success, failure) {
 // TODO: rename
 function getWeatherMetaData(lat, lng, success, failure) {
     const requestOptions = {
-        "url": "http://localhost:8080/api/external/weather/"+lat+"/"+lng,
+        "url": "/api/external/weather/"+lat+"/"+lng,
         "dataType": "json",
         "type": "GET"
     }
@@ -38,7 +38,7 @@ function getWeatherMetaData(lat, lng, success, failure) {
 // TODO: remove "location"
 function saveUserNameToDB(username) {
     const requestOptions = {
-        "url": "http://localhost:8080/api/user/",
+        "url": "/api/user/",
         "dataType": "json",
         "type": "POST",
         "data": {
@@ -52,7 +52,7 @@ function saveUserNameToDB(username) {
 // Gets userid for unique username as login token
 function loginWithUserName(username, success, failure) {
     const requestOptions = {
-        "url": "http://localhost:8080/api/user/login/"+username,
+        "url": "/api/user/login/"+username,
         "dataType": "json",
         "type": "POST",
         "data": {
@@ -66,7 +66,7 @@ function loginWithUserName(username, success, failure) {
 // saves a location and the userid that signed in with that location
 function saveUserLocation(userid, zipcode, lat, lng, success, failure) {
     const requestOptions = {
-        "url": "http://localhost:8080/api/locations/",
+        "url": "/api/locations/",
         "dataType": "json",
         "type": "POST",
         "data": {
@@ -83,7 +83,7 @@ function saveUserLocation(userid, zipcode, lat, lng, success, failure) {
 // gets all locations for a given user, based on userid
 function getUserLocationsById(userid, success, failure) {
     const reqOptions = {
-        "url": "http://localhost:8080/api/locations/"+userid,
+        "url": "/api/locations/"+userid,
         "dataType": "json",
         "type": "GET",
     }
