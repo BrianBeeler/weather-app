@@ -28,10 +28,10 @@ https://bezkoder.com/react-node-express-mysql/
 Clientside:
 
 V1
-1.(Now removed! See old commits, if interested!)
-2. vanilla js,css,html -> see app/*  
-3. View/controller/model => app.js
-4. Services that talk to api => services.js
+1.    (Now removed! See old commits, if interested!)
+2.    vanilla js,css,html -> see app/*  
+3.    View/controller/model => app.js
+4.    Services that talk to api => services.js
 
 V2 
 1. React App
