@@ -1,6 +1,6 @@
 # weather-app
 
-#prompt:
+# prompt:
 
 Build an interface that prompts a user’s location and displays the current weather info about the location. Integrate whichever weather source you feel comfortable integrating and explain why you selected that source.
 
@@ -12,7 +12,7 @@ Commit the code to GitHub, BitBucket, or other hosted Git repository and share i
 
 
 
-#Planning and work estimates:
+# Planning and work estimates:
 
 1. Have a working get request from the client to the db (5 hours) - actual ~10 hours
 2. Build out other layers of the API (10 hours)                   - actual ~15 hours
@@ -28,14 +28,14 @@ https://bezkoder.com/react-node-express-mysql/
 Clientside:
 
 V1
-   ->(Now removed! See old commits, if interested!)
-   -> vanilla js,css,html -> see app/*  
-   -> View/controller/model => app.js
-   -> Services that talk to api => services.js
+   1.(Now removed! See old commits, if interested!)
+   2. vanilla js,css,html -> see app/*  
+   3. View/controller/model => app.js
+   4. Services that talk to api => services.js
 V2 - React
-    -> React components in react-app/src/components/*
-    -> API services in react/app/src/services.js
-    -> /react-app/index renders react-app/App.js renders components
+    1. React components in react-app/src/components/*
+    2. API services in react/app/src/services.js
+    3. /react-app/index renders react-app/App.js renders components
 
 Express Server 
       -> server.js
