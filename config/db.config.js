@@ -2,7 +2,7 @@
 // TODO: set up with hosted db?
 
 module.exports = {
-    HOST: "localhost",
+    HOST: "database-1.ca7njwm32rvr.us-east-2.rds.amazonaws.com",
     USER: "root",
     PASSWORD: "net01642",
     DB: "testdb",

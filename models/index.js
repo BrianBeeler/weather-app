@@ -1,17 +1,23 @@
 const dbConfig = require("../config/db.config.js");
 
 const Sequelize = require("sequelize");
-const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
-  host: dbConfig.HOST,
-  dialect: dbConfig.dialect,
+const { dialect } = require("../config/db.config.js");
+'wUK2eFEFniOW2Faq569A'
+const sequelize = new Sequelize('briansdb', 'admin', 'beefbeefbeef', {
+  host: 'database-2-instance-1.ca7njwm32rvr.us-east-2.rds.amazonaws.com',
+  dialect: 'mysql', /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
 
-  pool: {
-    max: dbConfig.pool.max,
-    min: dbConfig.pool.min,
-    acquire: dbConfig.pool.acquire,
-    idle: dbConfig.pool.idle
-  }
 });
+
+async function authenticate() {
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+}
+authenticate();
 
 const db = {};
 
