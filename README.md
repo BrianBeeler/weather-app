@@ -28,15 +28,17 @@ https://bezkoder.com/react-node-express-mysql/
 Clientside:
 
 V1
-   1.(Now removed! See old commits, if interested!)
-   2. vanilla js,css,html -> see app/*  
-   3. View/controller/model => app.js
-   4. Services that talk to api => services.js
+
+1.(Now removed! See old commits, if interested!)
+2. vanilla js,css,html -> see app/*  
+3. View/controller/model => app.js
+4. Services that talk to api => services.js
+
 V2 
-    1. React App
-    2. React components in react-app/src/components/*
-    3. API services in react/app/src/services.js
-    4. /react-app/index renders react-app/App.js renders components
+1. React App
+2. React components in react-app/src/components/*
+3. API services in react/app/src/services.js
+4. /react-app/index renders react-app/App.js renders components
 
 Express Server 
       -> server.js
