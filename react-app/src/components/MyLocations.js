@@ -17,9 +17,14 @@ class Locations extends React.Component {
         this.state = {
             userWeather: []
         }
+
+        // Set up some initial variables
         this.locationInfo = null;
         this.debounceOut = false;
         this.zipTimeout = null;
+
+        // Function runs after key stroke in zip field.
+        // Function is debounced by 2 seconds
         this.zipChange = () => {
             if (this.zipTimeout) {
                 clearTimeout(this.zipTimeout);
@@ -29,6 +34,8 @@ class Locations extends React.Component {
                 this.getLocationInfo(zip);
             },2000);
         };
+
+        // Api call to get city, state, lat, and lng from zipcode
         this.getLocationInfo = async function getLocationInfo(zipcode) {
             console.log(zipcode);
             let zipPattern = new  RegExp('^[0-9]{5}$');
@@ -56,14 +63,16 @@ class Locations extends React.Component {
 
             }
         }
+
+        // Gets weather for all user locations, updates react state
         this.getWeatherForAllLocations =   async function getWeatherForAllLocations() {
 
             let locations = await Services.getUserLocationsById(props.userInfo.id)
             let weatherPromises = await locations.map(async (location) => {
-            let weatherData = await Services.getWeatherMetaData(location.lat, location.lng)
-        
-            let forcast = weatherData[0].shortForecast
-            forcast = forcast.charAt(0) + forcast.substring(1).toLowerCase();
+                let weatherData = await Services.getWeatherMetaData(location.lat, location.lng)
+            
+                let forcast = weatherData[0].shortForecast
+                forcast = forcast.charAt(0) + forcast.substring(1).toLowerCase();
 
                 return { 
                     city: location.city,
@@ -76,11 +85,12 @@ class Locations extends React.Component {
             });
         
             let res = await Promise.all(weatherPromises);
-            console.log("res", res);
             this.setState({
                 userWeather: res
             })
         }
+
+        // Saves a location with a username to the database
         this.saveLocation = async ()=> {
             if (this.props.userInfo) {
                 let savedLocation = await Services.saveUserLocation(this.props.userInfo.id, this.locationInfo.zipcode, this.locationInfo.lat, this.locationInfo.lng);
@@ -92,15 +102,13 @@ class Locations extends React.Component {
         }
     }
 
-
+    // When component loads/mounts, get all of that users locations
     componentDidMount() {
         this.getWeatherForAllLocations();
     }
 
     render() {
  
-        
-
         return (
         <div id="signed-in">
             <h2>Congrats!</h2> 

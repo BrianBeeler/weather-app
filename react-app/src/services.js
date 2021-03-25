@@ -6,10 +6,7 @@ let apihost = "localhost:8080";
 if (window.document.url === "brainsweatherapp.com") {
     apihost = "brainsweatherapp.com";
 }
-
-
-// TODO: 1. Remove localhost:8080, etc replace with "/"
-//       2. Remove CORS, make sure it works       
+    
 
 // Gets a latitude, longitude, and other info based on zipcode
 function getLocationByZip(zipcode, success, failure) {

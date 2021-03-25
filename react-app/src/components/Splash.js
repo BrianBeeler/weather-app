@@ -1,5 +1,6 @@
 import logo from '../sun_image.png';
 
+// This is a simple component, redirects traffic to the login page
 function Splash(props){
     return (    
         <div className="App">

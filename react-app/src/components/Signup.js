@@ -2,6 +2,7 @@ import "../styles.css";
 import Services from "../services.js";
 import React from "react";
 
+// Makes api call to save a user to the database
 async function saveUserName() {
     let username = document.querySelector("#userinput").value;
     let data;
@@ -27,6 +28,7 @@ async function saveUserName() {
     }
 }
 
+// Tries to login in, sets the state depending on if it works
 async function login() {
     let data, username
     username = document.querySelector('#userlogin').value;

@@ -26,7 +26,7 @@ https://bezkoder.com/react-node-express-mysql/
 # Stack
 
 Clientside 
-      V1 - Now removed
+      V1 - (Now removed! See old commits, if interested!)
             -> vanilla js,css,html -> see app/*  
             -> View/controller/model => app.js
             -> Services that talk to api => services.js
@@ -56,15 +56,41 @@ https://www.zipcodeapi.com/API#zipToLoc
 https://weather-gov.github.io/api/general-faqs
       - Weather.gov is data rich, free, and easy to use. No api
         key is needed, just a unique client tag
-      - Note: current conditions were not actually used, the data
-        received was the nearest forcast
+      - I've trusted weather.gov as my own weather source for a long time, so I trust its accuracy
 
 # Possible Improvements
-      - UX/UI design
       - Authentication
-      - Refactor front-end into vue/react components
-      - Refacter services and api logic with async/await
+      - Refacter all services and api logic with async/await
 
 # Proudest moment
       - In app.js Promise.All worked like expected on almost the first try
       
+
+# Setup
+
+
+
+MySQl
+1. Install mysql server: https://dev.mysql.com/downloads/mysql/
+2. Make sure mysql server is running locally
+3. Use mysql cli to create db: "testdb"
+4. Make sure your credentials align with what is in db.config.js
+
+Clone
+1. git clone https://github.com/BrianBeeler/weather-app.git
+
+Dependencies
+1. "cd weather-app", "npm install"
+2. "cd react-app", "yarn install" 
+
+Build
+1. "cd react-app", "npm run build", "cd ..", "node server.js" -> Creates a build file that will be served on localhost:8080
+
+Development
+1. "node server.js" --> starts server, the build version of the app should be visible on port 8080
+2. "cd react-app", "yarn start" --> starts react app for live development on port 3000
+
+
+Deployment
+1. Updates are automatically deployed to https://brians-weather-app.herokuapp.com/
+2. Note: Deployed app doesn't work yet, need to figure out a hosted database solution

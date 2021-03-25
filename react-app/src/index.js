@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// The app is rendered to #root
 ReactDOM.render(
   <React.StrictMode>
     <App page="splash"/>
