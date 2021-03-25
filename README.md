@@ -65,6 +65,7 @@ https://weather-gov.github.io/api/general-faqs
 # Possible Improvements
       - Authentication
       - Refacter all services and api logic with async/await
+      - Get deployment working with a hosted database config
 
 # Proudest moment
       - In app.js Promise.All worked like expected on almost the first try
