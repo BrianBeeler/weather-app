@@ -28,7 +28,6 @@ https://bezkoder.com/react-node-express-mysql/
 Clientside:
 
 V1
-
 1.(Now removed! See old commits, if interested!)
 2. vanilla js,css,html -> see app/*  
 3. View/controller/model => app.js
