@@ -12,28 +12,29 @@ Commit the code to GitHub, BitBucket, or other hosted Git repository and share i
 
 
 
-#Planning, take 2, with estimates:
+#Planning and work estimates:
 
 1. Have a working get request from the client to the db (5 hours) - actual ~10 hours
 2. Build out other layers of the API (10 hours)                   - actual ~15 hours
 3. Complete UX (5 hours)                                          - actual ~5  hours
 4. Testing, refactoring and documentation (5 hours)               - actual ~5  hours
-5. Refactoring into React App (10 hours)                          - actial ~10 hours
+5. Refactoring into React App (10 hours)                          - actual ~10 hours
 
 The backend architecture was heavily influenced by the following src:
 https://bezkoder.com/react-node-express-mysql/
 
 # Stack
 
-Clientside 
-      V1 - (Now removed! See old commits, if interested!)
-            -> vanilla js,css,html -> see app/*  
-            -> View/controller/model => app.js
-            -> Services that talk to api => services.js
-      V2 - React
-            -> React components in react-app/src/components/*
-            -> API services in react/app/src/services.js
-            -> /react-app/index renders react-app/App.js renders components
+Clientside:
+
+V1 - (Now removed! See old commits, if interested!)
+   -> vanilla js,css,html -> see app/*  
+   -> View/controller/model => app.js
+   -> Services that talk to api => services.js
+V2 - React
+    -> React components in react-app/src/components/*
+    -> API services in react/app/src/services.js
+    -> /react-app/index renders react-app/App.js renders components
 
 Express Server 
       -> server.js
