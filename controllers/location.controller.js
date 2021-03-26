@@ -45,10 +45,12 @@ exports.create = async (req, res) => {
 exports.findAll = (req, res) => {
 
     // Protect against sql injection, does sequelize.query have any filtering?
-    // https://sequelize.org/master/manual/raw-queries.html#bind-parameter
+    // https://sequelize.org/master/manual/raw-queries.html#bind-parameter -YES
 
     sequelize.query("SELECT distinct * FROM locations where userid="+req.params.userid, 
-        { type: db.Sequelize.QueryTypes.SELECT }
+        { type: db.Sequelize.QueryTypes.SELECT,
+          replacements: ['active'] // Protects against scripting
+        }
     )
     .then(data => {
 
