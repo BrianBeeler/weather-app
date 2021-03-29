@@ -41,6 +41,10 @@ class App extends React.Component {
   }
 
 
+  componentDidMount() {
+    document.title = "Brian's Weather App"
+  }
+
   render( ) {
 
   // Routing is done with simple if statements. Depending on the state 
