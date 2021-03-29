@@ -98,4 +98,4 @@ Development
 
 Deployment
 1. Updates are automatically deployed to https://brians-weather-app.herokuapp.com/
-2. Note: Deployed app doesn't work yet, need to figure out a hosted database solution
+2. Update: Deployed app is running. It make take some time for the initial load.
