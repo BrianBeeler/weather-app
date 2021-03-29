@@ -1,5 +1,7 @@
 // Database configuration
-// TODO: set up with hosted db?
+// Note: This is the local config. It is not used in the
+// deployed heroku app, or in the latest git commits. 
+// See models/index.js for current db setup. 
 
 module.exports = {
     HOST: "database-1.ca7njwm32rvr.us-east-2.rds.amazonaws.com",

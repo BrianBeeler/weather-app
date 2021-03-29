@@ -2,7 +2,11 @@ const dbConfig = require("../config/db.config.js");
 
 const Sequelize = require("sequelize");
 const { dialect } = require("../config/db.config.js");
-'wUK2eFEFniOW2Faq569A'
+
+// Note: currently have a hardcoded pass aws db password
+// under source control. This is considered bad practice: https://security.stackexchange.com/questions/191590/why-is-storing-passwords-in-version-control-a-bad-idea
+// TODO: Fix security concerns
+
 const sequelize = new Sequelize('briansdb', 'admin', 'beefbeefbeef', {
   host: 'database-2-instance-1.ca7njwm32rvr.us-east-2.rds.amazonaws.com',
   dialect: 'mysql', /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
