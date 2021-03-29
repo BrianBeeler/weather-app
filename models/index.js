@@ -3,7 +3,7 @@ const dbConfig = require("../config/db.config.js");
 const Sequelize = require("sequelize");
 const { dialect } = require("../config/db.config.js");
 
-// Note: currently have a hardcoded pass aws db password
+// Note: currently have a hardcoded aws db password
 // under source control. This is considered bad practice: https://security.stackexchange.com/questions/191590/why-is-storing-passwords-in-version-control-a-bad-idea
 // TODO: Fix security concerns
 
