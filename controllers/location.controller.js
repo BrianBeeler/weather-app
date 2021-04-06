@@ -49,7 +49,7 @@ exports.findAll = (req, res) => {
 
     sequelize.query("SELECT distinct * FROM locations where userid="+req.params.userid, 
         { type: db.Sequelize.QueryTypes.SELECT,
-          replacements: ['active'] // Protects against scripting
+          replacements: ['active'] // Protects against scripting attacks
         }
     )
     .then(data => {
