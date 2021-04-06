@@ -96,6 +96,7 @@ Development
 2. "cd react-app", "yarn start" --> starts react app for live development on port 3000
 
 
-Deployment
+Deployment to heroku
 1. Updates are automatically deployed to https://brians-weather-app.herokuapp.com/
-2. Update: Deployed app is running. It make take some time for the initial load.
+~~Update: Deployed app is running. It make take some time for the initial load.~~
+2. AWS hosting currently removed for cost saving; deployed api is not currently in use 
