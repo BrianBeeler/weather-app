@@ -98,5 +98,5 @@ Development
 
 Deployment to heroku
 1. Updates are automatically deployed to https://brians-weather-app.herokuapp.com/
-2. ~~Update: Deployed app is running. It make take some time for the initial load.
-3. AWS hosting currently removed, deployed app no longer works
+~~Update: Deployed app is running. It make take some time for the initial load.~~
+2. AWS db hosting currently removed for cost saving, api 
