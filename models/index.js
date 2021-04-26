@@ -1,16 +1,15 @@
-const dbConfig = require("../config/db.config.js");
+//const dbConfig = require("../config/db.config.js");
 
 const Sequelize = require("sequelize");
 const { dialect } = require("../config/db.config.js");
 
 // Note: currently have a hardcoded aws db password
 // under source control. This is considered bad practice: https://security.stackexchange.com/questions/191590/why-is-storing-passwords-in-version-control-a-bad-idea
-// TODO: Fix security concerns
 
-const sequelize = new Sequelize('briansdb', 'admin', 'beefbeefbeef', {
-  host: 'database-2-instance-1.ca7njwm32rvr.us-east-2.rds.amazonaws.com',
+const sequelize = new Sequelize('weather_app', 'root', 'mypassword', {
+  host: "ec2-3-135-234-206.us-east-2.compute.amazonaws.com",
+  port: "6603",
   dialect: 'mysql', /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
-
 });
 
 async function authenticate() {
