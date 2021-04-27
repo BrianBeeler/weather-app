@@ -75,6 +75,11 @@ fieldset .error {
   color: red;
 }
 
+fieldset .success {
+  float: left;
+  color: green;
+}
+
 #weather-display {
     flex-direction: column;
     align-items: center;

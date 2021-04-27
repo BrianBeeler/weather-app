@@ -1,7 +1,7 @@
 import $ from "jquery";
 
 // TODO: Refactor promises and callbacks into async/await
-let apihost = "localhost:8080";
+let apihost = "http://localhost:8080";
 
 if (window.document.url === "brainsweatherapp.com") {
     apihost = "brainsweatherapp.com";
@@ -12,7 +12,7 @@ if (window.document.url === "brainsweatherapp.com") {
 function getLocationByZip(zipcode, success, failure) {
     
     const reqOptions = {
-        "url": "/api/external/location/"+zipcode,
+        "url": apihost+"/api/external/location/"+zipcode,
         "dataType": "json",
         "type": "GET"
     }
@@ -24,7 +24,7 @@ function getLocationByZip(zipcode, success, failure) {
 // TODO: rename
 function getWeatherMetaData(lat, lng, success, failure) {
     const requestOptions = {
-        "url": "/api/external/weather/"+lat+"/"+lng,
+        "url": apihost+"/api/external/weather/"+lat+"/"+lng,
         "dataType": "json",
         "type": "GET"
     }
@@ -35,7 +35,7 @@ function getWeatherMetaData(lat, lng, success, failure) {
 // TODO: remove "location"
 function saveUserNameToDB(username) {
     const requestOptions = {
-        "url": "/api/user/",
+        "url": apihost+"/api/user/",
         "dataType": "json",
         "type": "POST",
         "data": {
@@ -49,7 +49,7 @@ function saveUserNameToDB(username) {
 // Gets userid for unique username as login token
 function loginWithUserName(username, success, failure) {
     const requestOptions = {
-        "url": "/api/user/login/"+username,
+        "url": apihost+"/api/user/login/"+username,
         "dataType": "json",
         "type": "POST",
         "data": {
@@ -63,7 +63,7 @@ function loginWithUserName(username, success, failure) {
 // saves a location and the userid that signed in with that location
 function saveUserLocation(userid, zipcode, lat, lng, success, failure) {
     const requestOptions = {
-        "url": "/api/locations/",
+        "url": apihost+"/api/locations/",
         "dataType": "json",
         "type": "POST",
         "data": {
@@ -80,7 +80,7 @@ function saveUserLocation(userid, zipcode, lat, lng, success, failure) {
 // gets all locations for a given user, based on userid
 function getUserLocationsById(userid, success, failure) {
     const reqOptions = {
-        "url": "/api/locations/"+userid,
+        "url": apihost+"/api/locations/"+userid,
         "dataType": "json",
         "type": "GET",
     }

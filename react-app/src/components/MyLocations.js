@@ -119,15 +119,14 @@ class Locations extends React.Component {
                 State: <input type="text" name="state" readOnly /><br />
                 <br/>      
             </div>
-            <div id="location-buttons">
-                <label>Is this the location you meant?</label>
+            {(this.state.locationData && this.state.locationData.zipcode) ? <div id="location-buttons">
                 <button className="btn fourth" 
                         onClick={ () => {
                             this.saveLocation()
                         } }
                         disabled={ (this.state.locationData && this.state.locationData.zipcode) ? false: true}
-                >Yes, check weather!</button><br/>
-            </div>
+                >Add this location</button><br/>
+            </div> : ""}
             <div>
                 <h3>Your Saved Locations</h3>
                 {this.state.userWeather.map((value, index) => {
