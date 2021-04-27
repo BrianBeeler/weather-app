@@ -100,6 +100,10 @@ class Locations extends React.Component {
             }
  
         }
+        this.deleteLocation = (index) => {
+            let zipcode = this.state.userWeather[index].zipcode;
+            Services.deleteLocation(zipcode, props.userInfo.id);
+        }
     }
 
     // When component loads/mounts, get all of that users locations
@@ -130,7 +134,11 @@ class Locations extends React.Component {
             <div>
                 <h3>My Locations</h3>
                 {this.state.userWeather.map((value, index) => {
-                    return <p key={index}> <span className="location-item">{value.zipcode}: {value.current}, with a temperature of {value.temperature}.</span><span class="delete"></span></p>
+                    return <p key={index}> <span className="location-item">{value.zipcode}: {value.current}, with a temperature of {value.temperature}.</span>
+                    <span className="delete" 
+                        onClick={   () => {
+                            this.deleteLocation(index)
+                    }}></span></p>
                 })}
                 {(!this.state.userWeather || this.state.userWeather.length === 0) ? <p> - You currently have no saved locations.</p> : ''}
 

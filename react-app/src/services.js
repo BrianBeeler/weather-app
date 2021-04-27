@@ -20,6 +20,20 @@ function getLocationByZip(zipcode, success, failure) {
     return $.ajax(reqOptions)
 }
 
+function deleteLocation(zipcode, username) {
+    const reqOptions = {
+        "url": apihost+"/api/external/location/",
+        "dataType": "json",
+        "type": "DELETE",
+        "data": {
+            zipcode: zipcode,
+            username: username
+        }
+    }
+    
+    return $.ajax(reqOptions)
+}
+
 // Poorly named, gets whether info, not metadata
 // TODO: rename
 function getWeatherMetaData(lat, lng, success, failure) {
@@ -87,13 +101,15 @@ function getUserLocationsById(userid, success, failure) {
     return $.ajax(reqOptions).done(success).fail(failure);
 }
 
+
 const Services = {
     getLocationByZip: getLocationByZip,
     getWeatherMetaData: getWeatherMetaData,
     saveUserNameToDB: saveUserNameToDB,
     loginWithUserName: loginWithUserName,
     saveUserLocation: saveUserLocation,
-    getUserLocationsById: getUserLocationsById
+    getUserLocationsById: getUserLocationsById,
+    deleteLocation: deleteLocation
 }
 
 export default Services;
