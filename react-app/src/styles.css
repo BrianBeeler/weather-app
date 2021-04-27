@@ -70,6 +70,11 @@ body {
     align-items: center;
 }
 
+fieldset .error {
+  float: left;
+  color: red;
+}
+
 #weather-display {
     flex-direction: column;
     align-items: center;
