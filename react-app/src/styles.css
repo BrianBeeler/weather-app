@@ -30,8 +30,16 @@
 }
 
 
-fieldset {
-  text-align: center;  
+fieldset label {
+  float: left;
+}
+input#userinput, input#userlogin {
+  width: 50%;
+  margin-right: 5px;
+}
+
+button#signup, button#login {
+  width: 25%;
 }
 
 h1 {
@@ -41,6 +49,11 @@ h1 {
 body {
     background-color: #282c34;;
     color: white;
+}
+
+#image-container img{
+  width: 100%;
+  margin-top: 20%;
 }
 
 #style-fields {

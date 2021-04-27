@@ -1,6 +1,7 @@
 import "../styles.css";
 import Services from "../services.js";
 import React from "react";
+import lightning from "../lightning.jpeg"
 
 // Makes api call to save a user to the database
 async function saveUserName() {
@@ -78,23 +79,25 @@ class Signup extends React.Component {
             <div id="login-container">
                 <h1>Brian's Weather App</h1>
                 <div id="signinlogin">
-                    <p>Sign Up Below:</p>
                     <div id="style-fields">
                         <fieldset>
                             <label>Username:</label>
                             <input type="text" id="userinput"></input>
-                            <button onClick={this.methods.saveUserName}>Save</button><br/>
+                            <button onClick={this.methods.saveUserName} className="signup">Save</button><br/>
                             {(this.state.signupSuccess) ? <p className="success" id="save-user-success">Congrats! You can sign in now!</p> : ''}
                             {(this.state.signupFailure) ?  <p className="error" id="save-user-error">Error. You may already have an account. Try signing in.</p> : '' }                   
                         </fieldset>
                         <fieldset>
                             <label>Login:</label>
                             <input type="text" id="userlogin"></input>
-                            <button onClick={this.methods.login}>Login</button>
+                            <button onClick={this.methods.login} className="login">Login</button>
                             {(this.state.loginFailure) ?  <p className="error" id="save-user-error">Error. Have you signed up?</p> : '' }  
                         </fieldset>
                     </div>
 
+                </div>
+                <div id="image-container">
+                    <img src={lightning}></img>
                 </div>
         </div>
             )
