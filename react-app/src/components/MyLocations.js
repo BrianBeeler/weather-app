@@ -128,9 +128,9 @@ class Locations extends React.Component {
                 >Add this location</button><br/>
             </div> : ""}
             <div>
-                <h3>Your Saved Locations</h3>
+                <h3>My Locations</h3>
                 {this.state.userWeather.map((value, index) => {
-                    return <p key={index}>{value.zipcode}: {value.current}, with a temperature of {value.temperature}.</p>
+                    return <p key={index}> <span className="location-item">{value.zipcode}: {value.current}, with a temperature of {value.temperature}.</span><span class="delete"></span></p>
                 })}
                 {(!this.state.userWeather || this.state.userWeather.length === 0) ? <p> - You currently have no saved locations.</p> : ''}
 

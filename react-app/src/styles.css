@@ -29,7 +29,16 @@
     width: 200px;
 }
 
+.delete::before {
+  content: 'x'; 
+  color: red;
+  font-weight: 300;
+  font-family: Arial, sans-serif;
+}
 
+.delete {
+  float: right;
+}
 fieldset label {
   float: left;
 }
@@ -51,6 +60,15 @@ body {
     color: white;
 }
 
+.location-item {
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 90%;
+    display: inline-block;
+    overflow: hidden;
+}
+
 #image-container img{
   width: 100%;
   margin-top: 20%;
@@ -62,6 +80,10 @@ body {
 
 #style-fields label {
   margin-right: 25px;
+}
+
+.elipsize {
+  text-overflow: ellipsis;
 }
 
 #logout-container {
