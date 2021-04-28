@@ -2,5 +2,40 @@
 /* High Level App Styles */
 
 body {
-  background-color: #282c34;;
+  background-color: #282c34;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+.weather-photo {
+  width: 75%;
+}
+
+.App-logo {
+  position: absolute;
+  left: 15%;
+  top: 15%;
+  width: 50px;
+  height: 50px;
+}
+
+.app-title {
+  width: 500px;
+  text-align: center;
+}
+
+@media (min-device-width: 610px) {
+  .App-logo {
+    top: 10%;
+  }
+}
+
+@media (min-device-width: 900px) {
+  .App-logo {
+    left: 25%;
+    top: 8%;
+  }
 }
