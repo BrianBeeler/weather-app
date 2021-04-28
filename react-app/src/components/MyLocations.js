@@ -100,9 +100,13 @@ class Locations extends React.Component {
             }
  
         }
-        this.deleteLocation = (index) => {
+        this.deleteLocation = async (index) => {
             let zipcode = this.state.userWeather[index].zipcode;
-            Services.deleteLocation(zipcode, props.userInfo.id);
+            let data = await Services.deleteLocation(zipcode, props.userInfo.id);
+            console.log("data", data);
+            if (data['rows-deleted'] > 0) {
+                this.getWeatherForAllLocations();
+            }
         }
     }
 

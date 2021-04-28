@@ -20,14 +20,17 @@ function getLocationByZip(zipcode, success, failure) {
     return $.ajax(reqOptions)
 }
 
-function deleteLocation(zipcode, username) {
+function deleteLocation(zipcode, userid) {
+   
+    console.log("Is called.");
+
     const reqOptions = {
-        "url": apihost+"/api/external/location/",
+        "url": apihost+"/api/locations/",
         "dataType": "json",
         "type": "DELETE",
         "data": {
             zipcode: zipcode,
-            username: username
+            userid: userid
         }
     }
     

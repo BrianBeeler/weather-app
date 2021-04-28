@@ -12,7 +12,7 @@ request = request.defaults({
 // Docs: https://www.zipcodeapi.com/API#zipToLoc
 exports.getLocationByZip = (req, res) => {
     const zip = req.params.zip;
-    var clientKey = "uIiN6JEncIkxyjKZfYIyVCJ0ycJXmcJAtcPeBRcaCdToVtm8YYm6CvcTXRld1tbo";
+    var clientKey = "EKnUePVOAwxbI2W8Slirxa9DZBdQLwTNM9Ay8BEDnpl1KRoZW0Jk5DcORe7xWGST";
     let url = "https://www.zipcodeapi.com/rest/"+clientKey+"/info.json/" + zip + "/degrees";
 
     request(url, function (error, response, body) {
@@ -20,8 +20,8 @@ exports.getLocationByZip = (req, res) => {
             res.send(body); 
         }
         else {
-            console.error("Error!", error)
-            res.status(500).json({ error: error });
+            console.error("Error!")
+            res.status(response.statusCode).json({ error: error });
         }
     });
 }

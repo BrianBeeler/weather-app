@@ -41,6 +41,41 @@ exports.create = async (req, res) => {
 
  };
 
+ exports.delete = async (req, res) => {
+     // Create a Location
+
+    console.log("Does run!")
+
+    let selector = {
+        where: {
+            userid: req.body.userid,
+            zipcode: req.body.zipcode,
+        }
+    }
+
+    console.log('selector:', selector);
+
+    // If one's there, just return that one.
+    // if one isn't there make one
+    let found = await Location.findOne(selector);
+    if (!found) {
+        res.status(404).send({
+            message: "User-location not found in database."
+        })
+
+    } else {
+        try {
+            Location.destroy(selector)
+            .then(data => {
+                res.status(200).send({"rows-deleted": data})
+            })
+        } catch(err) {
+            res.sendStatus(500).send(err);
+        }
+        
+    }
+ }
+
  // Retrieve all Locations for a given userid
 exports.findAll = (req, res) => {
 
