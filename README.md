@@ -66,37 +66,39 @@ https://weather-gov.github.io/api/general-faqs
       - Authentication
       - Refacter all services and api logic with async/await
       - Get deployment working with a hosted database config
-
-# Proudest moment
-      - In app.js Promise.All worked like expected on almost the first try
       
 
 # Setup
 
 
 
-MySQl
-1. Install mysql server: https://dev.mysql.com/downloads/mysql/
-2. Make sure mysql server is running locally
-3. Use mysql cli to create db: "testdb"
-4. Make sure your credentials align with what is in db.config.js
+MySQl (Updated)
+
+- Now uses a dockerized mysql instance on an AWS EC2 instance, for local and production builds
+
 
 Clone
 1. git clone https://github.com/BrianBeeler/weather-app.git
 
 Dependencies
 1. "cd weather-app", "npm install"
-2. "cd react-app", "yarn install" 
+2. "cd react-app", "npm install" 
 
 Build
-1. "cd react-app", "npm run build", "cd ..", "node server.js" -> Creates a build file that will be served on localhost:8080
+1. Go to react-app directory,
+2. Run "npm run build",
 
-Development
-1. "node server.js" --> starts server, the build version of the app should be visible on port 8080
-2. "cd react-app", "yarn start" --> starts react app for live development on port 3000
+Running react-app in development mode
+1. Start the server from the weather-app directory: "npm start"
+2. Go into the react-app directory, run "npm start"
+3. Live changes to the react app can be seen on localhost:3000
+
+Testing a build
+1. See steps under "build"
+2. Run app from weather-app directory: npm start
+3. Built version of the app can be seen on localhost:8080
 
 
-Deployment to heroku
-1. Updates are automatically deployed to https://brians-weather-app.herokuapp.com/
-~~Update: Deployed app is running. It make take some time for the initial load.~~
-2. AWS hosting currently removed for cost saving; deployed api is not currently in use 
+Deployments
+1. Deployments are completed manually by ssh'ing into the ec2
+2. Contact developer for instructions, PEM file needed.
