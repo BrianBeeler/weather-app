@@ -12,7 +12,7 @@ const app = express();
 // Needed for serving files in app.js
 app.use(express.static('app'));
 
-// app.use(cors());
+app.use(cors());
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
