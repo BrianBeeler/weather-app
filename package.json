@@ -26,6 +26,7 @@
     "mysql2": "^2.2.5",
     "pg": "^8.5.1",
     "postgres": "^1.0.2",
+    "referrer-policy": "^1.2.0",
     "request": "^2.88.2",
     "sequelize": "^6.5.1"
   },
