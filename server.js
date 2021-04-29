@@ -2,7 +2,7 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
-const cors = require("cors");
+// const cors = require("cors");
 const path = require("path");
 
 // TODO: Refactor in import blank from "blank" syntax
@@ -12,7 +12,7 @@ const app = express();
 // Needed for serving files in app.js
 app.use(express.static('app'));
 
-app.use(cors());
+// app.use(cors());
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());

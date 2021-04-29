@@ -11,18 +11,6 @@ This task can be solved in whichever language you prefer. Please use whichever l
 Commit the code to GitHub, BitBucket, or other hosted Git repository and share it with our team to review.
 
 
-
-# Planning and work estimates:
-
-1. Have a working get request from the client to the db (5 hours) - actual ~10 hours
-2. Build out other layers of the API (10 hours)                   - actual ~15 hours
-3. Complete UX (5 hours)                                          - actual ~5  hours
-4. Testing, refactoring and documentation (5 hours)               - actual ~5  hours
-5. Refactoring into React App (10 hours)                          - actual ~10 hours
-
-The backend architecture was heavily influenced by the following src:
-https://bezkoder.com/react-node-express-mysql/
-
 # Stack
 
 Clientside:
@@ -65,12 +53,10 @@ https://weather-gov.github.io/api/general-faqs
 # Possible Improvements
       - Authentication
       - Refacter all services and api logic with async/await
-      - Get deployment working with a hosted database config
+      - Get deployment working with a hosted database confi
       
 
 # Setup
-
-
 
 MySQl (Updated)
 
@@ -102,3 +88,6 @@ Testing a build
 Deployments
 1. Deployments are completed manually by ssh'ing into the ec2
 2. Contact developer for instructions, PEM file needed.
+
+Production Application:
+http://app.briansweatherapp.com/
