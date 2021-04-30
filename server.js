@@ -15,7 +15,7 @@ app.use(express.static('app'));
 
 app.use(cors());
 
-app.use(referrerPolicy({ policy: 'unsafe-url' }))
+app.use(referrerPolicy({ policy: 'same-origin' }))
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
