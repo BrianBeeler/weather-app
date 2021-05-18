@@ -6,8 +6,8 @@ const { dialect } = require("../config/db.config.js");
 // Note: currently have a hardcoded aws db password
 // under source control. This is considered bad practice: https://security.stackexchange.com/questions/191590/why-is-storing-passwords-in-version-control-a-bad-idea
 
-const sequelize = new Sequelize('weather_app', 'root', 'mypassword', {
-  host: "ec2-3-135-234-206.us-east-2.compute.amazonaws.com",
+const sequelize = new Sequelize('weather_app', 'weather-app', 'sunnyside', {
+  host: "localhost",
   port: "6603",
   dialect: 'mysql', /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
 });
