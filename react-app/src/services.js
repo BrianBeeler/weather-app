@@ -1,11 +1,7 @@
 import $ from "jquery";
 
-// TODO: Refactor promises and callbacks into async/await
-let apihost = "http://localhost:8080";
 
-if (window.document.url === "brainsweatherapp.com") {
-    apihost = "brainsweatherapp.com";
-}
+let apihost = "http://localhost:5000";
     
 
 // Gets a latitude, longitude, and other info based on zipcode
