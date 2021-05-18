@@ -1,5 +1,5 @@
 import weatherPhoto from '../weather_photo.JPG';
-import logo from "../sun_image.png";
+
 // This is a simple component, redirects traffic to the login page
 function Splash(props){
     return (    
@@ -7,7 +7,7 @@ function Splash(props){
             <header className="App-header">
                 <img src={weatherPhoto} className="weather-photo" alt="logo" />
                 <h1 className="app-title">Brian's Weather App</h1>
-                <a
+                <button
                     id="sign-up-link"
                     className="App-link"
                     target="_blank"
@@ -17,7 +17,7 @@ function Splash(props){
                     }}
                 >
                 Sign Up
-                </a>
+                </button>
             </header>
         </div>
   )

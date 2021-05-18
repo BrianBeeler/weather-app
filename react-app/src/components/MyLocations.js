@@ -2,13 +2,6 @@ import "../styles.css";
 import Services from "../services.js"
 import React from "react";
 
-function saveUserName() {
-
-}
-
-function login() {
-
-}
 
 class Locations extends React.Component {
 
@@ -93,7 +86,7 @@ class Locations extends React.Component {
         // Saves a location with a username to the database
         this.saveLocation = async ()=> {
             if (this.props.userInfo) {
-                let savedLocation = await Services.saveUserLocation(this.props.userInfo.id, this.locationInfo.zipcode, this.locationInfo.lat, this.locationInfo.lng);
+                await Services.saveUserLocation(this.props.userInfo.id, this.locationInfo.zipcode, this.locationInfo.lat, this.locationInfo.lng);
                 this.getWeatherForAllLocations();
             } else {
                 prompt("Please try that again.")

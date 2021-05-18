@@ -93,7 +93,7 @@ class Signup extends React.Component {
 
                 </div>
                 <div id="image-container">
-                    <img src={lightning}></img>
+                    <img src={lightning} alt="lightning"></img>
                 </div>
         </div>
             )

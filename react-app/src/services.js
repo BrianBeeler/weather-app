@@ -1,6 +1,6 @@
 import $ from "jquery";
 
-
+// TODO: Refactor promises and callbacks into async/await
 let apihost = "http://localhost:5000";
     
 
