@@ -8,7 +8,7 @@ const { dialect } = require("../config/db.config.js");
 
 const sequelize = new Sequelize('weather_app', 'weather-app', 'sunnyside', {
   host: "localhost",
-  port: "6603",
+  port: "3306",
   dialect: 'mysql', /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
 });
 
