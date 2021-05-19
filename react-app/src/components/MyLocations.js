@@ -86,7 +86,8 @@ class Locations extends React.Component {
         // Saves a location with a username to the database
         this.saveLocation = async ()=> {
             if (this.props.userInfo) {
-                await Services.saveUserLocation(this.props.userInfo.id, this.locationInfo.zipcode, this.locationInfo.lat, this.locationInfo.lng);
+                let locations = await Services.saveUserLocation(this.props.userInfo.id, this.locationInfo.zipcode, this.locationInfo.lat, this.locationInfo.lng);
+                console.log("Locations saved as: ", locations);
                 this.getWeatherForAllLocations();
             } else {
                 prompt("Please try that again.")
