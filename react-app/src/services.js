@@ -1,7 +1,7 @@
 import $ from "jquery";
 
 // TODO: Refactor promises and callbacks into async/await
-let apihost = "http://ec2-18-216-129-148.us-east-2.compute.amazonaws.com:5000";
+let apihost = "http://ec2-18-216-129-148.us-east-2.compute.amazonaws.com";
     
 
 // Gets a latitude, longitude, and other info based on zipcode
