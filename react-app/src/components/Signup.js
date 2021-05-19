@@ -37,7 +37,7 @@ async function login() {
     try {
         data = await Services.loginWithUserName(username);
     } catch(e) {
-       // Doesn't work, for some reason 
+       console.log(e); 
     }
     
     if (data) {
