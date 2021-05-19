@@ -11,7 +11,7 @@ async function saveUserName() {
     try {
         data = await Services.saveUserNameToDB(username);
     } catch(e) {
-        console.log("Error caught", e.responseText);
+        console.log("Error caught", e);
     }
 
     if (data) {
